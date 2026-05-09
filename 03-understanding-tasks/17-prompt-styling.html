@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Styling · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Prompt Styling — Terminus-2.0 documentation, section 03: Understanding Tasks.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class="active"><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-03">Understanding Tasks</a><span class="sep">/</span><span class="cur">Prompt Styling</span></nav><header class="chapter-head"><div class="meta"><span class="num">17</span><span class="tag">Section 03 &middot; Understanding Tasks</span></div><h1>Prompt Styling</h1></header><article><h1 id="instruction-prompt-styling">Instruction Prompt Styling</h1>
+<p>The <code>instruction.md</code> file is the primary interface between the task and the AI agent. To ensure Terminus Edition 2 reflects real-world usage, we the instructions to be realistic to how users type into a terminal agent, how the everyday person communicates with a claude code and/or cursor.</p>
+<p><em><strong>NOTE:</strong> The guidelines below are purposely vague to prevent the dataset we are building from being repeptitive in how the prompts are written. Lean always on the side of injecting your own voice and remember to change your style up from one task to another!</em></p>
+<blockquote>
+<p><strong>Find examples at the bottom of this page of the kind of instructions we are <em>not</em> looking for alongside why that methodology should be avoided.</strong></p>
+</blockquote>
+<h2 id="the-core-philosophy">The Core Philosophy</h2>
+<p>Some engineers might be more structured and well formatted in how they prompt models, while others are more casual and just throw a couple sentences with vague details. The idea is to capture this wide swath of variance from one task to another.</p>
+<p>We want to give the agent the <em>what (requirements)</em> but not the <em>how (as that would be essentially giving the agent the answers/hints!)</em></p>
+<p>The primary challenge in crafting your instructions will be achieving this realistic variance in style while maintaing adherence to the six core principles below.</p>
+<blockquote>
+<p><strong>Important:</strong> Prompts should <strong>NOT</strong> be LLM-generated. We want to avoid the "GPT-style" of writing (verbose, repetitive, and overly polite).</p>
+</blockquote>
+<h2 id="requirements">Requirements</h2>
+<p>Every <code>instruction.md</code> should adhere to these six general principles:</p>
+<h3 id="1-task-instructions-must-be-concise">1. Task Instructions Must be Concise</h3>
+<ul>
+<li>
+<p>Task instructions should be concise and clear. This means outlining the task in as little as one sentence, and as much as three paragraphs.</p>
+</li>
+<li>
+<p>Tasks should not be long running with many different instructions/requirements to follow.</p>
+</li>
+<li>
+<p>Aim to create tasks that represent genuinely challenging coding problems, not ones that simply challenge an AI agent's ability for instruction following.</p>
+</li>
+<li>
+<p>Task instructions should generally read like how a human would prompt a coding agent. This means no emojis, not a lot of markdown styling, and no longer running prompts.</p>
+</li>
+</ul>
+<h3 id="2-task-instructions-must-be-well-specified">2. Task Instructions Must be Well Specified</h3>
+<ul>
+<li>
+<p>While task instructions are now required to be concise, they still must be well specified. This means that the goal of a task is clear and obvious to the human/agent.</p>
+</li>
+<li>
+<p>The main criteria to look for here is tasks with a larger number of edge cases and requirements. If a task is primarily hard due to a large number of edge cases/requirements that are not handled well, it should be rejected.</p>
+</li>
+</ul>
+<h3 id="3-task-instructions-must-be-interesting">3. Task Instructions Must be Interesting</h3>
+<ul>
+<li>The task instruction should not be obscure or irrelevant to the point that no group of developers or users would find them interesting. Every task must be interesting or useful in some way.</li>
+</ul>
+<h3 id="4-task-instruction-must-not-give-the-answers-any-hints">4. Task Instruction Must NOT Give the Answers, any Hints</h3>
+<ul>
+<li>Conceptually, we are going for tasks that represent one shot tasks from a user to a terminal agent. If tasks contain significant hints or rubrics in the instruction.md for how to solve the task, it is not representative of the style of task we are looking for. Requirements can be included, but hints or stepwise instructions should not be.</li>
+</ul>
+<h3 id="5-task-instruction-must-be-unique">5. Task Instruction Must be Unique</h3>
+<ul>
+<li>
+<p>The task must be noticeably unique to any task in Terminal Bench 2, Terminal Bench 3, or Cognyzer's original Project Terminus (Edition 1).</p>
+</li>
+<li>
+<p>Similarity search evaluation results are provided to help make this determination. Generally, the logic for too similar tasks is:</p>
+<ol>
+<li>
+<p>Are the initial state/instructions different in a way that is non trivial</p>
+<p>OR</p>
+</li>
+<li>
+<p>Is the expected output different in a way that is non trivial</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="6-task-instruction-must-use-absolute-paths">6. Task Instruction Must use Absolute Paths</h3>
+<ul>
+<li>The task instruction.md file should not contain a canary string. This is usually an indicator that you are using an older task skeleton. The canary string gets passed as part of the prompt which we do not want represented in the data.</li>
+</ul>
+<h2 id="human-centric-vs-synthetic-styling">Human-Centric vs. Synthetic Styling</h2>
+<p>To maintain authenticity, compare these two styles:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Synthetic (Avoid)</th>
+<th style="text-align: left;">Human-Centric (Target)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tone</strong></td>
+<td style="text-align: left;">"You are an expert programmer. Your goal is to..."</td>
+<td style="text-align: left;">"We need to migrate the existing SQLite schema to..."</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Length</strong></td>
+<td style="text-align: left;">500+ words of redundant context.</td>
+<td style="text-align: left;">150-200 words of actionable info.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Guidance</strong></td>
+<td style="text-align: left;">"First, use the <code>ls</code> command to see files, then..."</td>
+<td style="text-align: left;">"The source data is in <code>/data</code>. Output the result to..."</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="common-prompting-errors-examples">Common Prompting Errors + Examples</h2>
+<p>Below you will find examples of instructions that violate our core principle: human-sounding prompts that give the agent the what (requirements), not the how (answers/hints). You should be writing instructions the way you normally would interact with a model. Each section includes a real example and an explanation of why it fails.</p>
+<h3 id="1-step-by-step-walkthrough-with-solution-values">1. Step-by-Step Walkthrough With Solution Values</h3>
+<h4 id="example">Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="gu">##### Step 3: Optimize the File Sync Utility</span>
+
+Modify <span class="sb">`/app/file_sync.py`</span> to implement the following optimizations:
+
+<span class="k">1.</span> <span class="gs">**Socket Buffer Tuning**</span>
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>Set <span class="sb">`SO_RCVBUF`</span> to <span class="sb">`262144`</span> bytes (256 KB)
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>Set <span class="sb">`SO_SNDBUF`</span> to <span class="sb">`262144`</span> bytes (256 KB)
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>Enable <span class="sb">`SO_REUSEADDR`</span>
+
+<span class="k">2.</span> <span class="gs">**TCP Settings**</span>
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>Disable <span class="sb">`TCP_NODELAY`</span> (set to <span class="sb">`0`</span>) to allow Nagle&#39;s algorithm for better bulk transfer
+
+<span class="k">3.</span> <span class="gs">**Buffer Size Optimization**</span>
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>Use <span class="sb">`65536`</span> bytes (64 KB) chunks for file reading and socket sending
+</code></pre></div>
+
+<h4 id="why-its-bad">Why it's bad</h4>
+<p>The prompt tells the agent exactly what to do, which defeats the purpose of the project. We should not be giving an explicit walkthrough to the agent on how to solve the problem.</p>
+<h3 id="2-hints-section-that-describes-the-answers">2. Hints Section That Describes the Answers</h3>
+<h4 id="example_1">Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="gu">##### Detection Guidance</span>
+
+Look for:
+
+<span class="k">-</span><span class="w"> </span>Currency conversion anomalies that affect only specific currency codes
+<span class="k">-</span><span class="w"> </span>Date field values that are valid but transposed relative to the source
+<span class="k">-</span><span class="w"> </span>Tax calculations where component ratios vary by product category
+<span class="k">-</span><span class="w"> </span>Cross-source matching that incorrectly conflates temporally distant records
+<span class="k">-</span><span class="w"> </span>Running balance computations that skip records at period boundaries
+<span class="k">-</span><span class="w"> </span>Display formatting precision that varies by value magnitude
+</code></pre></div>
+
+<h4 id="why-its-bad_1">Why it's bad</h4>
+<p>We should not be giving away answers. There is a full section explaining exactly how to detect each type of corruption.</p>
+<h3 id="3-excessive-markdown-bulleted-structure">3. Excessive Markdown / Bulleted Structure</h3>
+<h4 id="example_2">Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="gu">##### `revenue-by-category` `GET`</span>
+
+Array sorted by <span class="sb">`totalRevenue`</span> desc. Fields: <span class="sb">`category`</span>, <span class="sb">`totalRevenue`</span> (sum of <span class="sb">`quantity * unitPrice`</span>, rounded 2dp), <span class="sb">`orderCount`</span> ...
+
+<span class="gu">##### `top-customers` `GET`</span>
+
+Array sorted by <span class="sb">`totalSpent`</span> desc. Optional <span class="sb">`?limit=N`</span> (default 5). Fields: <span class="sb">`customerId`</span>, <span class="sb">`customerName`</span> ...
+
+<span class="gu">##### `order-status-summary` `GET`</span>
+
+Array sorted by <span class="sb">`count`</span> desc covering <span class="gs">**all**</span> statuses. Fields: <span class="sb">`status`</span>, <span class="sb">`count`</span>, <span class="sb">`percentage`</span> ...
+</code></pre></div>
+
+<h4 id="why-its-bad_2">Why it's bad</h4>
+<p>This reads like structured documentation, not a human prompt. Avoid excessive use of markdown and bullet points.</p>
+<h3 id="4-overly-prescriptive-guidelines">4. Overly Prescriptive Guidelines</h3>
+<h4 id="example_3">Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">-</span><span class="w"> </span><span class="sb">`backend/processor.py`</span> — must export four functions:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="sb">`apply_grayscale(input_path: Path, output_path: Path) -&gt; Path`</span>
+<span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="sb">`apply_rotate(input_path: Path, output_path: Path, angle: float) -&gt; Path`</span>
+<span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="sb">`apply_resize(input_path: Path, output_path: Path, width: int, height: int) -&gt; Path`</span>
+<span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="sb">`get_image_dimensions(input_path: Path) -&gt; tuple[int, int]`</span>
+</code></pre></div>
+
+<h4 id="why-its-bad_3">Why it's bad</h4>
+<p>It tells the agent the exact project structure, exact library to use, exact build commands, and so on. It is overly prescriptive.</p>
+<h3 id="5-bold-markers-highlighting-solution-details">5. Bold Markers Highlighting Solution Details</h3>
+<h4 id="example_4">Example</h4>
+<div class="codehilite"><pre><span></span><code><span class="gs">**Policy limit**</span>: $500 USD per single expense.
+
+<span class="gs">**Note:**</span> Policy violations (that is, expenses over $500) operate independently from the approval system; they do <span class="gs">**not**</span> preclude an expense from being simultaneously evaluated and counted in the approval statistics tracking.
+
+<span class="gs">**Compliance Rate Definition**</span>: <span class="sb">`1.0 - (violation_count / total_expenses)`</span>
+</code></pre></div>
+
+<h4 id="why-its-bad_4">Why it's bad</h4>
+<p>Scattered bold markers draw attention to exact solution details. We should not be giving hints.</p></article><nav class="pager"><a class="prev" href="../03-understanding-tasks/16-rubrics.html"><span class="dir">&larr; Previous</span><span class="lbl">Rubrics</span></a><a class="next" href="../03-understanding-tasks/18-difficulty-guidelines.html"><span class="dir">Next &rarr;</span><span class="lbl">Difficulty Guidelines</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#the-core-philosophy">The Core Philosophy</a></li>
+<li><a href="#requirements">Requirements</a><ul>
+<li><a href="#1-task-instructions-must-be-concise">1. Task Instructions Must be Concise</a></li>
+<li><a href="#2-task-instructions-must-be-well-specified">2. Task Instructions Must be Well Specified</a></li>
+<li><a href="#3-task-instructions-must-be-interesting">3. Task Instructions Must be Interesting</a></li>
+<li><a href="#4-task-instruction-must-not-give-the-answers-any-hints">4. Task Instruction Must NOT Give the Answers, any Hints</a></li>
+<li><a href="#5-task-instruction-must-be-unique">5. Task Instruction Must be Unique</a></li>
+<li><a href="#6-task-instruction-must-use-absolute-paths">6. Task Instruction Must use Absolute Paths</a></li>
+</ul>
+</li>
+<li><a href="#human-centric-vs-synthetic-styling">Human-Centric vs. Synthetic Styling</a></li>
+<li><a href="#common-prompting-errors-examples">Common Prompting Errors + Examples</a><ul>
+<li><a href="#1-step-by-step-walkthrough-with-solution-values">1. Step-by-Step Walkthrough With Solution Values</a></li>
+<li><a href="#2-hints-section-that-describes-the-answers">2. Hints Section That Describes the Answers</a></li>
+<li><a href="#3-excessive-markdown-bulleted-structure">3. Excessive Markdown / Bulleted Structure</a></li>
+<li><a href="#4-overly-prescriptive-guidelines">4. Overly Prescriptive Guidelines</a></li>
+<li><a href="#5-bold-markers-highlighting-solution-details">5. Bold Markers Highlighting Solution Details</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

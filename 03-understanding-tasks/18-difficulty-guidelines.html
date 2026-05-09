@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Difficulty Guidelines · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Difficulty Guidelines — Terminus-2.0 documentation, section 03: Understanding Tasks.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class="active"><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-03">Understanding Tasks</a><span class="sep">/</span><span class="cur">Difficulty Guidelines</span></nav><header class="chapter-head"><div class="meta"><span class="num">18</span><span class="tag">Section 03 &middot; Understanding Tasks</span></div><h1>Difficulty Guidelines</h1></header><article><h1 id="difficulty-guidelines">Difficulty Guidelines</h1>
+<p>Task difficulty is determined by accuracy when run against frontier AI models. This guide helps you design tasks at the right difficulty level.</p>
+<h2 id="difficulty-levels">Difficulty Levels</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Difficulty</th>
+<th>Pass Rate</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hard</strong></td>
+<td>&lt;= 20%</td>
+<td>Requires deep expertise, multi-step reasoning</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>21-80%</td>
+<td>Moderate complexity, some domain knowledge</td>
+</tr>
+<tr>
+<td><strong>Easy</strong></td>
+<td>&gt; 80%</td>
+<td>Straightforward but still challenging</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Important:</strong> Tasks with 100% pass rate will NOT be accepted.</p>
+</blockquote>
+<h2 id="evaluation-process">Evaluation Process</h2>
+<p>Each task is evaluated against:
+- <strong>GPT-5.2</strong> with Codex agent
+- <strong>Claude Opus 4.6</strong> with Claude Code agent
+- <strong>5 runs each</strong> to determine average accuracy</p>
+<p>The difficulty is based on whichever model performs better.</p>
+<h2 id="designing-for-difficulty">Designing for Difficulty</h2>
+<h3 id="for-hard-tasks-20">For Hard Tasks (&lt;= 20%)</h3>
+<p>Hard tasks require one or more of:</p>
+<ul>
+<li><strong>Deep domain expertise</strong> — Knowledge LLMs haven't seen much</li>
+<li><strong>Complex multi-step reasoning</strong> — 10+ sequential steps</li>
+<li><strong>Subtle debugging</strong> — Root cause analysis required</li>
+<li><strong>Niche tools/languages</strong> — Less common technologies</li>
+</ul>
+<p><strong>Techniques:</strong>
+- Use bespoke rules buried in common patterns
+- Require understanding of obscure documentation
+- Create debugging tasks where the root cause isn't obvious
+- Use domain-specific knowledge (blockchains, scientific computing)</p>
+<h3 id="for-medium-tasks-21-80">For Medium Tasks (21-80% )</h3>
+<p>Medium tasks typically involve:</p>
+<ul>
+<li><strong>Moderate complexity</strong> — 5-10 steps</li>
+<li><strong>Some domain knowledge</strong> — Common but not trivial</li>
+<li><strong>Clear requirements</strong> — But non-obvious solution</li>
+</ul>
+<p><strong>Techniques:</strong>
+- Combine multiple familiar concepts
+- Add edge cases that require careful handling
+- Include configuration that's easy to miss</p>
+<h3 id="for-easy-tasks-80">For Easy Tasks (&gt; 80% )</h3>
+<p>Easy tasks should still be:</p>
+<ul>
+<li><strong>Non-trivial</strong> — Not one-liners</li>
+<li><strong>Multi-step</strong> — At least 3-5 steps</li>
+<li><strong>Testable</strong> — Clear success criteria</li>
+</ul>
+<p><strong>Techniques:</strong>
+- Standard tasks with one or two tricky aspects
+- Well-known problems with specific constraints
+- Setup tasks with multiple requirements</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<h3 id="making-tasks-too-easy">Making Tasks Too Easy</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-step solutions</td>
+<td>Agents solve immediately</td>
+</tr>
+<tr>
+<td>Obvious debugging</td>
+<td>Pattern matching succeeds</td>
+</tr>
+<tr>
+<td>Common tutorials</td>
+<td>In training data</td>
+</tr>
+<tr>
+<td>Simple API usage</td>
+<td>Well-documented</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="making-tasks-unfair">Making Tasks Unfair</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Impossible requirements</td>
+<td>No one can solve</td>
+</tr>
+<tr>
+<td>Ambiguous instructions</td>
+<td>Luck determines success</td>
+</tr>
+<tr>
+<td>Time-dependent</td>
+<td>Results vary randomly</td>
+</tr>
+<tr>
+<td>External dependencies</td>
+<td>Environment issues</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="testing-your-difficulty">Testing Your Difficulty</h2>
+<p>Before submitting, verify difficulty by:</p>
+<h3 id="1-run-against-oracle-agent">1. Run Against Oracle Agent</h3>
+<div class="codehilite"><pre><span></span><code>harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>oracle<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<p>This should PASS. If it doesn't, your task may have issues.</p>
+<h3 id="2-run-against-real-agents">2. Run Against Real Agents</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># GPT-5.2</span>
+harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>openai/@openai/gpt-5.2<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+
+<span class="c1"># Claude Opus 4.6</span>
+harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>anthropic/@anthropic/claude-opus-4-6<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<p>Run at least 2-3 times to gauge pass rate.</p>
+<h3 id="3-analyze-failures">3. Analyze Failures</h3>
+<p>When agents fail:
+- Is it for a <strong>good reason</strong> (task difficulty)?
+- Or a <strong>bad reason</strong> (unclear instructions)?</p>
+<p>Good failures: Agent misunderstood complexity, missed edge case
+Bad failures: Ambiguous requirements, environment issues</p>
+<h2 id="adjusting-difficulty">Adjusting Difficulty</h2>
+<h3 id="to-make-harder">To Make Harder:</h3>
+<ul>
+<li>Add more steps</li>
+<li>Include hidden requirements</li>
+<li>Use niche knowledge</li>
+<li>Create debugging scenarios</li>
+<li>Add edge cases</li>
+</ul>
+<h3 id="to-make-easier">To Make Easier:</h3>
+<ul>
+<li>Reduce step count</li>
+<li>Make requirements more explicit</li>
+<li>Use common technologies</li>
+<li>Provide more hints in instructions</li>
+<li>Simplify the environment</li>
+</ul>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Start creating your task</li>
+<li>Review CI checks</li>
+</ul></article><nav class="pager"><a class="prev" href="../03-understanding-tasks/17-prompt-styling.html"><span class="dir">&larr; Previous</span><span class="lbl">Prompt Styling</span></a><a class="next" href="../03-understanding-tasks/19-example-tasks.html"><span class="dir">Next &rarr;</span><span class="lbl">Example Tasks</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#difficulty-levels">Difficulty Levels</a></li>
+<li><a href="#evaluation-process">Evaluation Process</a></li>
+<li><a href="#designing-for-difficulty">Designing for Difficulty</a><ul>
+<li><a href="#for-hard-tasks-20">For Hard Tasks (&lt;= 20%)</a></li>
+<li><a href="#for-medium-tasks-21-80">For Medium Tasks (21-80% )</a></li>
+<li><a href="#for-easy-tasks-80">For Easy Tasks (&gt; 80% )</a></li>
+</ul>
+</li>
+<li><a href="#common-mistakes">Common Mistakes</a><ul>
+<li><a href="#making-tasks-too-easy">Making Tasks Too Easy</a></li>
+<li><a href="#making-tasks-unfair">Making Tasks Unfair</a></li>
+</ul>
+</li>
+<li><a href="#testing-your-difficulty">Testing Your Difficulty</a><ul>
+<li><a href="#1-run-against-oracle-agent">1. Run Against Oracle Agent</a></li>
+<li><a href="#2-run-against-real-agents">2. Run Against Real Agents</a></li>
+<li><a href="#3-analyze-failures">3. Analyze Failures</a></li>
+</ul>
+</li>
+<li><a href="#adjusting-difficulty">Adjusting Difficulty</a><ul>
+<li><a href="#to-make-harder">To Make Harder:</a></li>
+<li><a href="#to-make-easier">To Make Easier:</a></li>
+</ul>
+</li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

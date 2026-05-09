@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task Taxonomy · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Task Taxonomy — Terminus-2.0 documentation, section 03: Understanding Tasks.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class="active"><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-03">Understanding Tasks</a><span class="sep">/</span><span class="cur">Task Taxonomy</span></nav><header class="chapter-head"><div class="meta"><span class="num">12</span><span class="tag">Section 03 &middot; Understanding Tasks</span></div><h1>Task Taxonomy</h1></header><article><h1 id="task-type-taxonomy-category">Task Type Taxonomy (Category)</h1>
+<p>Each task must be labeled with a category from this taxonomy. The category describes the primary theme, topic, or activity in the task.</p>
+<p>In addition, there exists another axis of categorization called subtypes, or subcategories <em>(in task.toml)</em></p>
+<p><strong>Refer to our page on subtypes/subcategories for more information</strong></p>
+<h2 id="categories">Categories</h2>
+<h3 id="system-administration">system-administration</h3>
+<p>Tasks involving OS-level configuration, user management, package management, processes, or installing, configuring, and bringing up services, networks, and environments.</p>
+<p><strong>Examples:</strong>
+- Configure a systemd service
+- Set up user permissions
+- Install and configure Nginx</p>
+<hr>
+<h3 id="build-and-dependency-management">build-and-dependency-management</h3>
+<p>Compile code, manage dependencies, build components.</p>
+<p><strong>Examples:</strong>
+- Fix a broken build configuration
+- Resolve dependency conflicts
+- Set up a multi-stage Docker build</p>
+<hr>
+<h3 id="data-processing">data-processing</h3>
+<p>Tasks that transform, parse, filter, aggregate datasets or files and directories and generate derived output.</p>
+<p><strong>Examples:</strong>
+- Parse and transform CSV data
+- Aggregate log files
+- Filter and sort JSON datasets</p>
+<hr>
+<h3 id="games">games</h3>
+<p>Tasks centered on game-like or simulated environments, interactive puzzles, or simulation games that run in the terminal.</p>
+<p><strong>Examples:</strong>
+- Complete a VimGolf challenge
+- Solve a terminal-based puzzle
+- Navigate a text adventure</p>
+<hr>
+<h3 id="software-engineering">software-engineering</h3>
+<p>Tasks focused on developing or testing features and algorithms, fixing bugs and improving/optimizing an existing feature, implementing tests, or maintaining software projects.</p>
+<p><strong>Examples:</strong>
+- Implement a caching algorithm
+- Fix a race condition
+- Optimize database queries</p>
+<hr>
+<h3 id="machine-learning">machine-learning</h3>
+<p>Tasks requiring training, fine-tuning, running inference, or evaluating machine learning models, including dependency setup, running training loops, and managing data pipelines for ML tasks.</p>
+<p><strong>Examples:</strong>
+- Fine-tune a model on custom data
+- Debug a training pipeline
+- Optimize inference performance</p>
+<hr>
+<h3 id="debugging">debugging</h3>
+<p>Tasks that require identifying, diagnosing, and fixing errors in scripts, codebases, or system configurations.</p>
+<p><strong>Examples:</strong>
+- Find and fix a memory leak
+- Debug a failing test suite
+- Diagnose a production crash</p>
+<hr>
+<h3 id="security">Security</h3>
+<p>Tasks related to cryptography, authentication, permissions, penetration-style tests, exploit, validate vulnerabilities, reverse engineering or security configuration.</p>
+<p><strong>Examples:</strong>
+- Find a SQL injection vulnerability
+- Configure secure TLS settings
+- Reverse engineer a binary</p>
+<hr>
+<h3 id="scientific-computing">scientific-computing</h3>
+<p>Tasks using scientific libraries or workflows, such as numerical computation, simulations, or domain-specific research code.</p>
+<p><strong>Examples:</strong>
+- Implement a numerical solver
+- Debug a simulation
+- Optimize a scientific computation</p>
+<hr>
+<h2 id="distribution-guidelines">Distribution Guidelines</h2>
+<p>To ensure benchmark diversity:</p>
+<ul>
+<li><strong>No single type</strong> should exceed ~30% of total tasks</li>
+<li><strong>At least four types</strong> should each represent ≥10%</li>
+</ul>
+<h2 id="choosing-a-category">Choosing a Category</h2>
+<p>Pick the category that best describes the <strong>primary</strong> activity:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>If the task mainly involves...</th>
+<th>Use category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS/server configuration</td>
+<td>system-administration</td>
+</tr>
+<tr>
+<td>Build systems, packages</td>
+<td>build-and-dependency-management</td>
+</tr>
+<tr>
+<td>ETL, file processing</td>
+<td>data-processing</td>
+</tr>
+<tr>
+<td>Interactive challenges</td>
+<td>games</td>
+</tr>
+<tr>
+<td>Code development, testing</td>
+<td>software-engineering</td>
+</tr>
+<tr>
+<td>ML model work</td>
+<td>machine-learning</td>
+</tr>
+<tr>
+<td>Finding/fixing bugs</td>
+<td>debugging</td>
+</tr>
+<tr>
+<td>Security issues</td>
+<td>security</td>
+</tr>
+<tr>
+<td>Scientific code</td>
+<td>scientific-computing</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="domain-specific-tasks">Domain-Specific Tasks</h2>
+<p>If your tasks are designed for a particular domain (e.g., financial services), an additional taxonomy specific to that domain can be developed. Discuss with the team on Slack.</p>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>See example tasks</li>
+<li>Learn difficulty guidelines</li>
+</ul></article><nav class="pager"><a class="prev" href="../03-understanding-tasks/11-task-requirements.html"><span class="dir">&larr; Previous</span><span class="lbl">Task Requirements</span></a><a class="next" href="../03-understanding-tasks/13-diversity-requirements.html"><span class="dir">Next &rarr;</span><span class="lbl">Diversity Requirements</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#categories">Categories</a><ul>
+<li><a href="#system-administration">system-administration</a></li>
+<li><a href="#build-and-dependency-management">build-and-dependency-management</a></li>
+<li><a href="#data-processing">data-processing</a></li>
+<li><a href="#games">games</a></li>
+<li><a href="#software-engineering">software-engineering</a></li>
+<li><a href="#machine-learning">machine-learning</a></li>
+<li><a href="#debugging">debugging</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#scientific-computing">scientific-computing</a></li>
+</ul>
+</li>
+<li><a href="#distribution-guidelines">Distribution Guidelines</a></li>
+<li><a href="#choosing-a-category">Choosing a Category</a></li>
+<li><a href="#domain-specific-tasks">Domain-Specific Tasks</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

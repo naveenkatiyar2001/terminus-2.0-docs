@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cli User Guide · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Cli User Guide — Terminus-2.0 documentation, section 01: Getting Started.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class="active"><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-01">Getting Started</a><span class="sep">/</span><span class="cur">Cli User Guide</span></nav><header class="chapter-head"><div class="meta"><span class="num">04</span><span class="tag">Section 01 &middot; Getting Started</span></div><h1>Cli User Guide</h1></header><article><h1 id="cognyzer-terminal-bench-cli">Cognyzer Terminal-Bench CLI</h1>
+<p>The <code>stb</code> command-line tool provides an end-to-end interface for creating, testing, submitting, and reviewing Terminal-Bench tasks.</p>
+<h2 id="installation">Installation</h2>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="authentication">Authentication</h3>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>login
+</code></pre></div>
+
+<p>This opens the Experts platform and displays the API key generation dialog. Click "Generate Key", copy the key, and paste it into your terminal.</p>
+<h3 id="ai-credentials">AI Credentials</h3>
+<p>Refresh AI credentials if exhausted or expired:</p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>keys<span class="w"> </span>refresh
+</code></pre></div>
+
+<p><strong>View current credentials:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>keys<span class="w"> </span>show
+</code></pre></div>
+
+<hr>
+<h2 id="task-submission-workflow">Task Submission Workflow</h2>
+<h3 id="overview">Overview</h3>
+<div class="codehilite"><pre><span></span><code>1. Initialize  →  2. Develop  →  3. Test  →  4. Submit  →  5. Iterate
+</code></pre></div>
+
+<h3 id="1-initialize-task">1. Initialize Task</h3>
+<p><strong>First, find your assigned project:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>projects<span class="w"> </span>list
+</code></pre></div>
+
+<p>This shows your projects with names, IDs, and assignment status for each role (Submitter, Reviewer, Adjudication):
+- <strong>active</strong>: You are assigned and the project is open
+- <strong>inactive</strong>: You are assigned but the project is closed
+- <strong>unassigned</strong>: You are not assigned to this role (contact admin to request assignment)</p>
+<p><strong>Create a new task folder:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>init<span class="w"> </span>my-task-name<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID<span class="w"> </span>-t<span class="w"> </span>TEMPLATE_NAME
+</code></pre></div>
+
+<p>You can use either the project name or UUID. If a project has only one template, <code>-t</code> is optional.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Using project name</span>
+stb<span class="w"> </span>init<span class="w"> </span>my-task-name<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Terminus-2nd-Edition&quot;</span><span class="w"> </span>-t<span class="w"> </span>base
+
+<span class="c1"># Using project UUID</span>
+stb<span class="w"> </span>init<span class="w"> </span>my-task-name<span class="w"> </span>-p<span class="w"> </span>bfe79c33-8ab0-4061-9849-08d3207c9927<span class="w"> </span>-t<span class="w"> </span>milestone
+</code></pre></div>
+
+<p>This creates a folder with <code>instruction.md</code>, <code>task.toml</code>, <code>environment/Dockerfile</code>, <code>solution/solve.sh</code>, and <code>tests/test.sh</code>. See Task Components for details.</p>
+<h3 id="2-develop-your-task">2. Develop Your Task</h3>
+<p>Edit the generated files:
+- <code>instruction.md</code> - Task instructions (Task Components)
+- <code>task.toml</code> - Metadata and configuration (Task Components)
+- <code>environment/Dockerfile</code> - Environment setup (Docker Environment)
+- <code>solution/solve.sh</code> - Oracle solution (Writing Oracle Solution)
+- <code>tests/test.sh</code> - Verification tests (Writing Tests)</p>
+<h3 id="3-test-locally">3. Test Locally</h3>
+<p><strong>Test your solution interactively:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>harbor<span class="w"> </span>tasks<span class="w"> </span>start-env<span class="w"> </span>-p<span class="w"> </span>./my-task-name<span class="w"> </span>-i
+</code></pre></div>
+
+<p><strong>Run oracle agent:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>oracle<span class="w"> </span>-p<span class="w"> </span>./my-task-name
+</code></pre></div>
+
+<p><strong>Test with real agents:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># GPT-5.2</span>
+stb<span class="w"> </span>harbor<span class="w"> </span>run<span class="w"> </span>-m<span class="w"> </span>@openai/gpt-5.2<span class="w"> </span>-p<span class="w"> </span>./my-task-name
+
+<span class="c1"># Claude Opus 4.6</span>
+stb<span class="w"> </span>harbor<span class="w"> </span>run<span class="w"> </span>-m<span class="w"> </span>@anthropic/claude-opus-4-6<span class="w"> </span>-p<span class="w"> </span>./my-task-name
+</code></pre></div>
+
+<p>Run each agent 2-3 times to gauge difficulty. See Testing Agent Performance for guidance.</p>
+<h3 id="4-submit">4. Submit</h3>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>create<span class="w"> </span>./my-task-name<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID<span class="w"> </span>--time<span class="w"> </span>SECONDS
+</code></pre></div>
+
+<p>Use <code>--time</code> to specify time spent in seconds (e.g., <code>--time 7200</code> for 2 hours).</p>
+<p>The CLI automatically:
+- Zips your task folder
+- Uploads to the platform
+- Runs automated checks
+- Creates a submission record</p>
+<h3 id="5-iterate-on-feedback">5. Iterate on Feedback</h3>
+<p><strong>Check submission status:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>list<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID
+</code></pre></div>
+
+<p>Add <code>--show-folder-names</code> to see task folder names (slower):</p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>list<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID<span class="w"> </span>--show-folder-names
+</code></pre></div>
+
+<p><strong>View in browser:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>view<span class="w"> </span>SUBMISSION_ID
+</code></pre></div>
+
+<p><strong>Download submission:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>download<span class="w"> </span>SUBMISSION_ID
+</code></pre></div>
+
+<p><strong>Download feedback:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>feedback<span class="w"> </span>SUBMISSION_ID
+</code></pre></div>
+
+<p>Feedback typically includes:
+- Agent-generated quality and difficulty check results
+- Notes from expert reviewers</p>
+<p>Read the feedback carefully and either revise your submission accordingly or provide a rebuttal note when updating.</p>
+<p><strong>Update when in <code>NEEDS_REVISION</code> state:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>update<span class="w"> </span>./my-task-name<span class="w"> </span>-s<span class="w"> </span>SUBMISSION_ID<span class="w"> </span>--time<span class="w"> </span>SECONDS
+</code></pre></div>
+
+<p>Use <code>--time</code> to specify time spent in seconds (e.g., <code>--time 3600</code> for 1 hour).</p>
+<p>If the submission was created using the CLI, you can omit the submission ID:</p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>update<span class="w"> </span>./my-task-name<span class="w"> </span>--time<span class="w"> </span>SECONDS
+</code></pre></div>
+
+<p><strong>Control reviewer notification:</strong>
+By default, submissions are sent to reviewers after evaluation passes. To skip this:</p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>submissions<span class="w"> </span>update<span class="w"> </span>./my-task-name<span class="w"> </span>--time<span class="w"> </span>SECONDS<span class="w"> </span>--no-send-to-reviewer
+</code></pre></div>
+
+<p><strong>Submission Statuses:</strong></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Can Update?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EVALUATION_PENDING</code></td>
+<td>Automated checks running</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>NEEDS_REVISION</code></td>
+<td>Reviewer requested changes</td>
+<td>Yes ✓</td>
+</tr>
+<tr>
+<td><code>REVIEW_PENDING</code></td>
+<td>Waiting for review</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>ACCEPTED</code></td>
+<td>Task accepted</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>OFFERED</code></td>
+<td>Offer made</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>REJECTED</code></td>
+<td>Task rejected</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>SKIPPED</code></td>
+<td>Task skipped</td>
+<td>No</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="task-review-workflow">Task Review Workflow</h2>
+<h3 id="overview_1">Overview</h3>
+<div class="codehilite"><pre><span></span><code>1. Get Assignment  →  2. Download  →  3. Review  →  4. Make Decision
+</code></pre></div>
+
+<h3 id="1-get-review-assignment">1. Get Review Assignment</h3>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>get<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID
+</code></pre></div>
+
+<p>Fetches your current review or requests a new assignment.</p>
+<p><strong>List your review assignments:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>list<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID
+</code></pre></div>
+
+<h3 id="2-download-submission">2. Download Submission</h3>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>download<span class="w"> </span>REVIEW_ID
+</code></pre></div>
+
+<p>Downloads and extracts the submission to your local machine.</p>
+<p><strong>View feedback:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>feedback<span class="w"> </span>REVIEW_ID
+</code></pre></div>
+
+<p><strong>Open in browser (optional):</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>view<span class="w"> </span>REVIEW_ID
+</code></pre></div>
+
+<h3 id="3-review-the-task">3. Review the Task</h3>
+<p>Test and evaluate using the guidelines in Review Guidelines and Reviewer Training.</p>
+<h3 id="4-make-decision">4. Make Decision</h3>
+<p><strong>Accept:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>accept<span class="w"> </span>REVIEW_ID<span class="w"> </span>--time<span class="w"> </span>SECONDS
+</code></pre></div>
+
+<p>Optional: Add notes with <code>-n</code> or <code>--notes</code>:</p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>accept<span class="w"> </span>REVIEW_ID<span class="w"> </span>--time<span class="w"> </span>SECONDS<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Optional acceptance notes&quot;</span>
+</code></pre></div>
+
+<p><strong>Request revision:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>revise<span class="w"> </span>REVIEW_ID<span class="w"> </span>--notes<span class="w"> </span><span class="s2">&quot;Specific issues to address&quot;</span><span class="w"> </span>--time<span class="w"> </span>SECONDS
+</code></pre></div>
+
+<p>Both commands require:
+- <code>--time</code> or <code>-t</code>: Time spent in seconds (e.g., <code>--time 2700</code> for 45 minutes)
+- <code>--notes</code> or <code>-n</code>: Required for revisions, optional for acceptance</p>
+<p><strong>Skip (if not qualified to review):</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>reviews<span class="w"> </span>skip<span class="w"> </span>REVIEW_ID<span class="w"> </span>--reason<span class="w"> </span>REASON<span class="w"> </span>--rationale<span class="w"> </span><span class="s2">&quot;Explanation&quot;</span>
+</code></pre></div>
+
+<p>Valid skip reasons: <code>outside_expertise</code>, <code>unclear_or_ambiguous</code>, <code>too_time_consuming</code>, <code>invalid_input</code>, <code>other</code></p>
+<hr>
+<h2 id="task-adjudication-workflow">Task Adjudication Workflow</h2>
+<h3 id="overview_2">Overview</h3>
+<div class="codehilite"><pre><span></span><code>1. Get Assignment  →  2. Download  →  3. Adjudicate  →  4. Make Decision
+</code></pre></div>
+
+<h3 id="1-get-adjudication-assignment">1. Get Adjudication Assignment</h3>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>get<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID
+</code></pre></div>
+
+<p>Fetches your current adjudication assignment or requests a new one.</p>
+<p><strong>List your adjudication assignments:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>list<span class="w"> </span>-p<span class="w"> </span>PROJECT_ID
+</code></pre></div>
+
+<h3 id="2-download-submission_1">2. Download Submission</h3>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>download<span class="w"> </span>ADJUDICATION_ID
+</code></pre></div>
+
+<p>Downloads the submission file, submission payload, and review payloads.</p>
+<p><strong>View feedback:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>feedback<span class="w"> </span>ADJUDICATION_ID
+</code></pre></div>
+
+<p><strong>Open in browser (optional):</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>view<span class="w"> </span>ADJUDICATION_ID
+</code></pre></div>
+
+<h3 id="3-adjudicate-the-task">3. Adjudicate the Task</h3>
+<p>Review the submission along with the previous review feedback. Test and evaluate using the guidelines in Review Guidelines and Reviewer Training.</p>
+<h3 id="4-make-decision_1">4. Make Decision</h3>
+<p><strong>Accept:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>accept<span class="w"> </span>ADJUDICATION_ID<span class="w"> </span>--time<span class="w"> </span>SECONDS
+</code></pre></div>
+
+<p>Optional: Add notes with <code>-n</code> or <code>--notes</code>:</p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>accept<span class="w"> </span>ADJUDICATION_ID<span class="w"> </span>--time<span class="w"> </span>SECONDS<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Explanation of decision&quot;</span>
+</code></pre></div>
+
+<p><strong>Request revision:</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>revise<span class="w"> </span>ADJUDICATION_ID<span class="w"> </span>--notes<span class="w"> </span><span class="s2">&quot;Specific issues to address&quot;</span><span class="w"> </span>--time<span class="w"> </span>SECONDS
+</code></pre></div>
+
+<p>Both commands require:
+- <code>--time</code> or <code>-t</code>: Time spent in seconds (e.g., <code>--time 1800</code> for 30 minutes)
+- <code>--notes</code> or <code>-n</code>: Required for revisions, optional for acceptance</p>
+<p><strong>Skip (if not qualified to adjudicate):</strong></p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>adjudications<span class="w"> </span>skip<span class="w"> </span>ADJUDICATION_ID<span class="w"> </span>--reason<span class="w"> </span>REASON<span class="w"> </span>--rationale<span class="w"> </span><span class="s2">&quot;Explanation&quot;</span>
+</code></pre></div>
+
+<p>Valid skip reasons: <code>outside_expertise</code>, <code>unclear_or_ambiguous</code>, <code>too_time_consuming</code>, <code>invalid_input</code>, <code>other</code></p>
+<hr>
+<h2 id="additional-commands">Additional Commands</h2>
+<h3 id="claude-code-integration">Claude Code Integration</h3>
+<p>Run Claude Code for interactive development:</p>
+<div class="codehilite"><pre><span></span><code>stb<span class="w"> </span>claude
+</code></pre></div>
+
+<p>This launches Claude Code with pre-configured AI credentials from the platform.</p>
+<hr>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="this-folder-has-already-been-submitted">"This folder has already been submitted"</h3>
+<p>Use <code>stb submissions update</code> instead of <code>create</code>.</p>
+<h3 id="cannot-update-submission-is-in-x-state">"Cannot update: submission is in X state"</h3>
+<p>You can only update submissions in <code>NEEDS_REVISION</code> state. Check with <code>stb submissions list</code>.</p>
+<h3 id="docker-issues">Docker Issues</h3>
+<ol>
+<li>Ensure Docker Desktop is running</li>
+<li>On macOS: Enable <strong>"Allow the default Docker socket to be used"</strong> in Docker Advanced Settings</li>
+</ol>
+<p>See Troubleshooting Guide for more issues.</p>
+<p><strong>Note:</strong> Windows is not supported.</p>
+<h3 id="api-key-issues">API Key Issues</h3>
+<p>Run <code>stb login</code> to re-authenticate.</p>
+<h3 id="maximum-refresh-limit-3-error">"Maximum refresh limit (3)" Error</h3>
+<p>If you see <code>Bad Request: Maximum refresh limit (3)</code> when running <code>stb keys refresh</code>, you've exceeded the retry limit for AI credential requests. Contact an admin to reset your key refresh limit, then run <code>stb keys refresh</code> again.</p>
+<h3 id="model-warnings-safe-to-ignore">Model Warnings (Safe to Ignore)</h3>
+<div class="codehilite"><pre><span></span><code>Failed to retrieve model info for &#39;@anthropic/claude-opus-4-6&#39;...
+</code></pre></div>
+
+<p>This is a known harmless warning that can be safely ignored. Your testing will work fine.</p>
+<hr>
+<h2 id="upgrading">Upgrading</h2>
+<p>The CLI checks for updates daily. When available, you'll see:</p>
+<div class="codehilite"><pre><span></span><code>⚠️  Update available: 1.1.0 → 1.2.0
+   Run: uv tool upgrade Cognyzer-stb --find-links https://Cognyzer-python-wheels.s3.us-west-2.amazonaws.com/stb/index.html --python &quot;&gt;=3.12&quot;
+</code></pre></div>
+
+<p>Run the command to upgrade. Your config and credentials are preserved.</p>
+<hr>
+<h2 id="uninstallation">Uninstallation</h2>
+<h3 id="uninstall-cli">Uninstall CLI</h3>
+<div class="codehilite"><pre><span></span><code>uv<span class="w"> </span>tool<span class="w"> </span>uninstall<span class="w"> </span>Cognyzer-stb
+</code></pre></div>
+
+<h3 id="remove-configuration-optional">Remove Configuration (Optional)</h3>
+<div class="codehilite"><pre><span></span><code>rm<span class="w"> </span>-rf<span class="w"> </span>~/.config/stb/
+</code></pre></div>
+
+<p><strong>Note:</strong> Windows is not supported.</p>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li><strong>New to Terminal-Bench?</strong> Read What Makes a Good Task</li>
+<li><strong>Ready to create?</strong> See Task Components and Platform Submission Guide</li>
+<li><strong>Before submitting:</strong> Review the Submission Checklist</li>
+<li><strong>Need help?</strong> Check the FAQ or ask in Slack</li>
+</ul></article><nav class="pager"><a class="prev" href="../01-getting-started/03-platform-onboarding.html"><span class="dir">&larr; Previous</span><span class="lbl">Platform Onboarding</span></a><a class="next" href="../01-getting-started/05-edition1-to-edition2-changes.html"><span class="dir">Next &rarr;</span><span class="lbl">Edition1 To Edition2 Changes</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#getting-started">Getting Started</a><ul>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#ai-credentials">AI Credentials</a></li>
+</ul>
+</li>
+<li><a href="#task-submission-workflow">Task Submission Workflow</a><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#1-initialize-task">1. Initialize Task</a></li>
+<li><a href="#2-develop-your-task">2. Develop Your Task</a></li>
+<li><a href="#3-test-locally">3. Test Locally</a></li>
+<li><a href="#4-submit">4. Submit</a></li>
+<li><a href="#5-iterate-on-feedback">5. Iterate on Feedback</a></li>
+</ul>
+</li>
+<li><a href="#task-review-workflow">Task Review Workflow</a><ul>
+<li><a href="#overview_1">Overview</a></li>
+<li><a href="#1-get-review-assignment">1. Get Review Assignment</a></li>
+<li><a href="#2-download-submission">2. Download Submission</a></li>
+<li><a href="#3-review-the-task">3. Review the Task</a></li>
+<li><a href="#4-make-decision">4. Make Decision</a></li>
+</ul>
+</li>
+<li><a href="#task-adjudication-workflow">Task Adjudication Workflow</a><ul>
+<li><a href="#overview_2">Overview</a></li>
+<li><a href="#1-get-adjudication-assignment">1. Get Adjudication Assignment</a></li>
+<li><a href="#2-download-submission_1">2. Download Submission</a></li>
+<li><a href="#3-adjudicate-the-task">3. Adjudicate the Task</a></li>
+<li><a href="#4-make-decision_1">4. Make Decision</a></li>
+</ul>
+</li>
+<li><a href="#additional-commands">Additional Commands</a><ul>
+<li><a href="#claude-code-integration">Claude Code Integration</a></li>
+</ul>
+</li>
+<li><a href="#troubleshooting">Troubleshooting</a><ul>
+<li><a href="#this-folder-has-already-been-submitted">"This folder has already been submitted"</a></li>
+<li><a href="#cannot-update-submission-is-in-x-state">"Cannot update: submission is in X state"</a></li>
+<li><a href="#docker-issues">Docker Issues</a></li>
+<li><a href="#api-key-issues">API Key Issues</a></li>
+<li><a href="#maximum-refresh-limit-3-error">"Maximum refresh limit (3)" Error</a></li>
+<li><a href="#model-warnings-safe-to-ignore">Model Warnings (Safe to Ignore)</a></li>
+</ul>
+</li>
+<li><a href="#upgrading">Upgrading</a></li>
+<li><a href="#uninstallation">Uninstallation</a><ul>
+<li><a href="#uninstall-cli">Uninstall CLI</a></li>
+<li><a href="#remove-configuration-optional">Remove Configuration (Optional)</a></li>
+</ul>
+</li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

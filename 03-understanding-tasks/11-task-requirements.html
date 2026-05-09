@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task Requirements · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Task Requirements — Terminus-2.0 documentation, section 03: Understanding Tasks.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class="active"><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-03">Understanding Tasks</a><span class="sep">/</span><span class="cur">Task Requirements</span></nav><header class="chapter-head"><div class="meta"><span class="num">11</span><span class="tag">Section 03 &middot; Understanding Tasks</span></div><h1>Task Requirements</h1></header><article><h1 id="task-requirements">Task Requirements</h1>
+<p>This page lists all requirements your task must meet to pass review. Use this as a reference during development.</p>
+<hr>
+<h1 id="structural-requirements">Structural Requirements</h1>
+<p>All task submissions should include and be organized within a single directory containing the following file structure and metadata.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">File</th>
+<th style="text-align: center;">Required</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>task.toml</code></strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;"><strong>The Manifest File.</strong> Includes the following required keys:</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>task_type</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Primary category from the 9-type taxonomy.</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>subcategories</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">List of subtypes/subcategories applicable to your task. <strong>If no subtypes align with your task, leave this empty</strong> (e.g., Long Context, DB Interaction).</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>number_of_milestones</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Number of milestones in your task. <strong>If no milestones, set this to "0"</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>difficulty</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Tier based on frontier model pass rates.</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>codebase_size</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Rough scale of files in the task environment the agent operates on (<code>minimal</code>, <code>small</code>, or <code>large</code>). Bands: minimal ≈ 0–20, small ≈ 20+, large ≈ 200+ files. This is a categorical label (not a literal file count); count environment files the agent works with, not outputs the agent produces.</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>languages</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">List of the main programming language(s) used in the task. <em>(e.g., If your task is mainly a C# task, but you use a little bit of Python throughout, only list C# not Python.)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>tags</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">3-6 free-form keywords for tools/libraries (e.g., FFmpeg, Redis).</td>
+</tr>
+<tr>
+<td style="text-align: left;">↳ <code>runtime_limits</code></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Defined timeouts for agent, verifier, and build.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>instruction.md</code></strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Precise, human-style task instructions and requirements.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>environment/Dockerfile</code></strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Environment setup (or <code>docker-compose.yaml</code> for multi-container).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>solution/solve.sh</code></strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">The reference Oracle solution script.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>tests/test.sh</code></strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">The main test runner (must produce the final reward file).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>tests/test_outputs.py</code></strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">Deterministic state validation (Pytest).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>milestone_x.md</code></strong></td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: left;"><em>[Optional]</em> Only include these if your task has milestones, otherwise exclude.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>README.md</code></strong></td>
+<td style="text-align: center;">💡</td>
+<td style="text-align: left;"><em>[Optional]</em> Additional documentation or contributor notes.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Pro-Tip for Directory Hygiene:</strong>
+Always ensure your <code>tests/</code> directory is self-contained. If your task transitions from a Python unit test to a Playwright UI test, remember to update your <code>task.toml</code> metadata to reflect the correct verifier type and ensure the <code>Dockerfile</code> has the necessary browser dependencies.</p>
+</blockquote>
+<hr>
+<p>Choose and download the appropriate task skeleton template for your task type:</p>
+<p>There are 3 task skeletons to choose from:
+ - <strong><em>"Regular"</em> Task Skeleton:</strong> Use for all non-UI-Building and non-Milestone tasks
+ - <strong>UI Task Skeleton:</strong> Use for all UI-Building subtype tasks
+ - <strong>Milestone Task Skeleton:</strong> Use for all tasks which contain milestones</p>
+<p><pdf-download src="/Terminus-EC-Training-stateful/Terminus-2nd-Edition/default-template.zip" title="Download Regular Task Skeleton"></pdf-download></p>
+<p><pdf-download src="/Terminus-EC-Training-stateful/Terminus-2nd-Edition/milestone-template.zip" title="Download Milestone Task Skeleton"></pdf-download></p>
+<p><pdf-download src="/Terminus-EC-Training-stateful/Terminus-2nd-Edition/ui-template.zip" title="Download UI Task Skeleton"></pdf-download></p>
+<hr>
+<h2 id="instructionmd-requirements">instruction.md Requirements</h2>
+<p>The instructions to should adhere to these six general principles:
+1. Task instructions <strong>must be concise.</strong>
+2. Task instructions <strong>must be well specified.</strong>
+3. Task instructions <strong>must be interesting.</strong>
+4. Task instruction <strong>must not give Answers, Hints.</strong>
+5. Task instruction <strong>must be unique.</strong>
+6. Task instruction <strong>must use absolute paths.</strong></p>
+<blockquote>
+<p><strong>Consult the Prompt Styling Guide for further details on each core principle.</strong></p>
+</blockquote>
+<h2 id="tasktoml-requirements">task.toml Requirements</h2>
+<p>This is a file that contains this following metadata:
+* <strong>Difficulty</strong>: The accuracy (out of 5 attempts) for the frontier models described in the Difficulty section.
+* <strong>Task Type (<em>category</em>)</strong>: Each task must have exactly one task type from the list of tasks defined in the Task Type section.
+* <strong>Task Subtype (<em>subcategories</em>)</strong>: If your task has subtypes, then you will include each subtype it aligns to. If no subtypes align to your task, then leave this field blank. <em>See the Task Subtypes section for more information.</em>
+* <strong>Number of Milestones</strong>: The number of milestones present in the task, if none then set this to <strong>0Codebase Size</strong>: One of <code>minimal</code>, <code>small</code>, or <code>large</code>—a rough scale of how many files in the task environment the agent operates on (not files the agent produces). Bands are minimal ≈ 0–20, small ≈ 20+, large ≈ 200+ files.
+* <strong>Languages</strong>: Coding language(s) used in the oracle solution or required by the agent.
+* <strong>Runtime Limits</strong>: Each task must specify timeouts, including maximum agent runtime (agent_timeout_sec), maximum verifier runtime (verifier_timeout_sec), and maximum environment build runtime (environment_build_timeout_sec), to ensure tasks are bounded and reproducible.
+* <strong>Tags</strong>: Each task must include ~3-6 descriptive tags in the manifest. Tags are free-form keywords that capture important tools, libraries, techniques, or subtopics relevant to the task.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Task configuration schema version</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span>
+
+<span class="c1"># Task metadata (author, difficulty, categorization)</span>
+<span class="k">[metadata]</span>
+<span class="n">author_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;anonymous&quot;</span>
+<span class="n">author_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;anonymous&quot;</span>
+<span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span>
+<span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;software-engineering&quot;</span>
+<span class="c1"># Options for subcategories are: &quot;long_context&quot;, &quot;tool_specific&quot;, &quot;api_integration&quot;, &quot;db_interaction&quot;, &quot;ui_building&quot;</span>
+<span class="n">subcategories</span><span class="w"> </span><span class="o">=</span>
+<span class="err"># The number of milestones in the task (can be zero if not a milestone task)</span>
+<span class="n">number_of_milestones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="c1"># Size of the codebase: minimal -&gt; 0-20 files, small -&gt; 20+ files, large -&gt; 200+ files. Includes all files in the environment (not files agent produces).</span>
+<span class="n">codebase_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;minimal&quot;</span>
+<span class="c1"># Coding languages used in the oracle solution or required by the agent</span>
+<span class="n">languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;bash&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># For tool_specific, api_integration, and db_interaction subcategories, please include specific tool, api framework, or database software</span>
+<span class="n">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;file-operations&quot;</span><span class="p">,]</span>
+<span class="c1"># Estimated time to complete (minutes)</span>
+<span class="n">expert_time_estimate_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span>
+<span class="n">junior_time_estimate_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
+
+<span class="c1"># Verifier: runs the test script to check task completion</span>
+<span class="k">[verifier]</span>
+<span class="n">timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">450.0</span>
+
+<span class="c1"># Agent: limits how long the agent can run when attempting the task</span>
+<span class="k">[agent]</span>
+<span class="n">timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">900.0</span>
+
+<span class="c1"># Sandbox environment limits</span>
+<span class="k">[environment]</span>
+<span class="n">build_timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">600.0</span>
+<span class="n">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">memory_mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4096</span>
+<span class="n">storage_mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10240</span>
+</code></pre></div>
+
+<hr>
+<h2 id="optional-milestone_xmd-requirements">(<em>optional</em>) milestone_x.md Requirements</h2>
+<p>This is a file that contains short, 1-2 sentence, descriptions of each milestone in your task. You must include a separate milestone_x.md file for each milestone in your task. <strong>See details in Milestones pageIf your task has no milestones, do not include this file in your .zip.</strong></p>
+<h2 id="solution-requirements">Solution Requirements</h2>
+<h3 id="solvesh-standards">solve.sh Standards</h3>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+
+<span class="c1"># Your solution commands here</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Human-written</strong> — No LLM-generated solutions</li>
+<li><strong>Deterministic</strong> — Same output every run (use seeds for randomness)</li>
+<li><strong>Self-contained</strong> — All logic in the script, no external dependencies</li>
+<li><strong>Idempotent</strong> — Can run multiple times safely</li>
+</ul>
+<p>For milestone tasks, the following are additionally required:
+- Include <code>solution/solve1.sh</code> through <code>solution/solveN.sh</code> where <code>N = number_of_milestones</code>
+- Keep each <code>solveX.sh</code> independently scoped to milestone <code>X</code>
+- Use <code>solution/solve.sh</code> to chain milestone solutions</p>
+<h3 id="what-makes-a-good-solution">What Makes a Good Solution</h3>
+<p>✅ Good:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Clear, step-by-step commands</span>
+<span class="nb">cd</span><span class="w"> </span>/app
+python<span class="w"> </span>process_data.py<span class="w"> </span>--seed<span class="w"> </span><span class="m">42</span><span class="w"> </span>&gt;<span class="w"> </span>output.txt
+</code></pre></div>
+
+<p>❌ Bad:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Relies on random behavior</span>
+python<span class="w"> </span>script.py<span class="w">  </span><span class="c1"># Non-deterministic output</span>
+</code></pre></div>
+
+<hr>
+<h2 id="test-requirements">Test Requirements</h2>
+<p>Tests need to fully cover all aspects of the prompt: all explicit requirements, implicitly expected behavior, and critical edge cases. Every requirement in the prompt must map to a test; if something is implied or stated in the prompt but not covered by tests, that is a miss.</p>
+<h3 id="test_outputspy-standards">test_outputs.py Standards</h3>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Test docstring explaining what this test file validates.&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_output_file_exists</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify that the required output file was created.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/app/output.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_output_format</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify output follows the specified JSON schema.&quot;&quot;&quot;</span>
+    <span class="c1"># Test implementation</span>
+</code></pre></div>
+
+<p>For milestone tasks, the following are additionally required:
+- Include <code>tests/test_m1.py</code> through <code>tests/test_mN.py</code> where <code>N = number_of_milestones</code>
+- <code>test_mX.py</code> must score only milestone <code>X</code> completion
+- Keep milestone tests aligned to milestone solutions (<code>solve1.sh</code> ↔ <code>test_m1.py</code>, etc.)</p>
+<h3 id="test-quality-checklist">Test Quality Checklist</h3>
+<ul>
+<li><strong>Docstrings on every test</strong> — Explain what behavior is being tested</li>
+<li><strong>Test behavior, not implementation</strong> — Verify outcomes, not methods</li>
+<li><strong>One test per requirement</strong> — Each requirement has a corresponding test</li>
+<li><strong>No leaked answers</strong> — Tests shouldn't reveal the solution</li>
+<li><strong>Anti-cheating measures</strong> — Avoid predictable patterns</li>
+</ul>
+<h3 id="no-canary-strings">No Canary Strings!</h3>
+<p>Canary strings are no longer required in Terminus Edition 2.</p>
+<h3 id="dependency-pinning">Dependency Pinning</h3>
+<p>All dependencies <strong>must</strong> have pinned versions. That includes <strong>language packages and the base image</strong>—pinning only <code>pip</code>/<code>npm</code> installs while leaving <code>FROM</code> floating can still change the OS, libraries, and tool versions between builds.</p>
+<p><strong>Base image:</strong> Pin every <code>FROM</code> line (and any images declared in <code>docker-compose.yaml</code>) using an <strong>image digest</strong> (<code>image@sha256:...</code>) or another <strong>immutable</strong> tag the publisher documents. Avoid <code>latest</code> and avoid relying on tags that move when the registry rebuilds (for example, many <code>major.minor</code>-style tags are updated in place).</p>
+<div class="codehilite"><pre><span></span><code><span class="c"># ✅ Good — base image pinned by digest; pip packages pinned</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim@sha256:&lt;digest&gt;</span>
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">pandas</span><span class="o">==</span><span class="m">2</span>.0.0<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.24.0
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="c"># ❌ Bad — unpinned base (many tags are rebuilt in place) and unpinned pip</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>numpy
+</code></pre></div>
+
+<p>Replace the example digest with the real value for your image. Obtain it from the registry UI (Docker Hub, etc.) or from <code>docker manifest inspect &lt;image&gt;:&lt;tag&gt;</code>.</p>
+<h3 id="security-requirements">Security Requirements</h3>
+<ul>
+<li>No privileged containers</li>
+<li>Solution files not baked into image</li>
+<li>Test dependencies not pre-installed</li>
+<li>Minimal attack surface</li>
+<li>Environment folder structure prevents accidental file copying</li>
+</ul>
+<hr>
+<h2 id="difficulty-requirements">Difficulty Requirements</h2>
+<p>Your task <strong>must</strong> have a pass rate below 100% against SOTA agents.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Difficulty</th>
+<th>Pass Rate</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hard</strong></td>
+<td>&lt;= 20%</td>
+<td>Requires deep expertise, multi-step reasoning</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>21-80%</td>
+<td>Moderate complexity, some domain knowledge</td>
+</tr>
+<tr>
+<td><strong>Easy</strong></td>
+<td>&gt; 80%</td>
+<td>Straightforward but still challenging</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="how-to-verify">How to Verify</h3>
+<p>Run your task against real agents (minimum 2-3 times each):</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># GPT-5.2</span>
+harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>openai/@openai/gpt-5.2<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+
+<span class="c1"># Claude Opus 4.6</span>
+harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>anthropic/@anthropic/claude-opus-4-6<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<hr>
+<h2 id="anti-cheating-requirements">Anti-Cheating Requirements</h2>
+<p>Tasks must be resistant to shortcut solutions:</p>
+<h3 id="required-measures">Required Measures</h3>
+<ol>
+<li><strong>Dynamic elements</strong> — Use computed values, not hardcoded answers</li>
+<li><strong>Validation depth</strong> — Test multiple aspects of the solution</li>
+<li><strong>Non-trivial verification</strong> — Answers shouldn't be derivable from tests</li>
+</ol>
+<h3 id="red-flags">Red Flags</h3>
+<p>Your task will be rejected if:</p>
+<ul>
+<li>Solution can be copied from test assertions</li>
+<li>Output format reveals the answer structure</li>
+<li>Hardcoded values can pass tests</li>
+<li>Agent can "guess" the correct answer</li>
+</ul>
+<hr>
+<h2 id="rubric-requirements">Rubric requirements</h2>
+<p>Every submission must include a rubric that is aligned to the task (authored and edited in the Cognyzer submission UI; see Understanding Rubrics).</p>
+<ul>
+<li><strong>Negative criteria:</strong> The rubric must contain <strong>at least three</strong> distinct criteria that assign <strong>negative</strong> rewards (for example, <code>-1</code>). Other allowed negative values follow the same rules as positives (<code>-1</code>, <code>-2</code>, <code>-3</code>, or <code>-5</code>; never <code>4</code>).</li>
+</ul>
+<hr>
+<h2 id="automated-check-requirements">Automated Check Requirements</h2>
+<p>Your task must pass all CI and LLMaJ checks:</p>
+<h3 id="ci-checks-must-pass">CI Checks (Must Pass)</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What It Validates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinned_dependencies</code></td>
+<td>All packages have version pins</td>
+</tr>
+<tr>
+<td><code>typos</code></td>
+<td>No spelling errors in code</td>
+</tr>
+<tr>
+<td><code>tests_or_solution_in_image</code></td>
+<td>Solution not in Docker image</td>
+</tr>
+<tr>
+<td><code>check_dockerfile_references</code></td>
+<td>All referenced files exist</td>
+</tr>
+<tr>
+<td><code>check_test_sh</code></td>
+<td>Test runner uses uv and produces reward file</td>
+</tr>
+<tr>
+<td><code>check_task_absolute_path</code></td>
+<td>Uses absolute paths</td>
+</tr>
+<tr>
+<td><code>ruff</code></td>
+<td>Python code passes linting</td>
+</tr>
+<tr>
+<td><code>validate_task_fields</code></td>
+<td>task.toml is complete</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="llmaj-checks-must-pass">LLMaJ Checks (Must Pass)</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What It Validates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>behavior_in_task_description</code></td>
+<td>Requirements clearly stated</td>
+</tr>
+<tr>
+<td><code>behavior_in_tests</code></td>
+<td>Tests verify behavior</td>
+</tr>
+<tr>
+<td><code>informative_test_docstrings</code></td>
+<td>Tests have good docstrings</td>
+</tr>
+<tr>
+<td><code>anti_cheating_measures</code></td>
+<td>Task can't be gamed</td>
+</tr>
+<tr>
+<td><code>hardcoded_solution</code></td>
+<td>Solution isn't trivially derivable</td>
+</tr>
+<tr>
+<td><code>file_reference_mentioned</code></td>
+<td>Output files specified</td>
+</tr>
+<tr>
+<td><code>structured_data_schema</code></td>
+<td>Data formats defined</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="summary-checklist">Summary Checklist</h2>
+<p>Before submitting, verify:</p>
+<ul>
+<li>All required files present (<code>instruction.md</code>, <code>task.toml</code>, <code>environment/Dockerfile</code>, <code>solution/solve.sh</code>, <code>tests/test.sh</code>)</li>
+<li>If milestone task: includes <code>solution/solve1.sh</code> ... <code>solution/solveN.sh</code> and <code>tests/test_m1.py</code> ... <code>tests/test_mN.py</code></li>
+<li>If milestone task: each <code>solveX.sh</code> and <code>test_mX.py</code> is scoped only to milestone <code>X</code></li>
+<li><code>instruction.md</code> is human-written and clear</li>
+<li><code>task.toml</code> has all required fields</li>
+<li><code>tests/test.sh</code> produces <code>/logs/verifier/reward.txt</code></li>
+<li>solution/solve.sh is deterministic</li>
+<li>All tests have docstrings</li>
+<li>Dependencies and base image are pinned</li>
+<li>Pass rate &lt; 80%</li>
+<li>Rubric includes at least three negative-reward criteria (e.g., <code>-1</code>)</li>
+<li>CI checks pass locally</li>
+<li>LLMaJ checks pass locally</li>
+</ul>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Quality Guidelines — Required quality standards</li>
+<li>Submission Checklist — Final pre-submission verification</li>
+<li>CI Checks Reference — Detailed check explanations</li>
+<li>Common Errors — Avoid these mistakes</li>
+</ul></article><nav class="pager"><a class="prev" href="../03-understanding-tasks/10-task-components.html"><span class="dir">&larr; Previous</span><span class="lbl">Task Components</span></a><a class="next" href="../03-understanding-tasks/12-task-taxonomy.html"><span class="dir">Next &rarr;</span><span class="lbl">Task Taxonomy</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#instructionmd-requirements">instruction.md Requirements</a></li>
+<li><a href="#tasktoml-requirements">task.toml Requirements</a></li>
+<li><a href="#optional-milestone_xmd-requirements">(optional) milestone_x.md Requirements</a></li>
+<li><a href="#solution-requirements">Solution Requirements</a><ul>
+<li><a href="#solvesh-standards">solve.sh Standards</a></li>
+<li><a href="#what-makes-a-good-solution">What Makes a Good Solution</a></li>
+</ul>
+</li>
+<li><a href="#test-requirements">Test Requirements</a><ul>
+<li><a href="#test_outputspy-standards">test_outputs.py Standards</a></li>
+<li><a href="#test-quality-checklist">Test Quality Checklist</a></li>
+<li><a href="#no-canary-strings">No Canary Strings!</a></li>
+<li><a href="#dependency-pinning">Dependency Pinning</a></li>
+<li><a href="#security-requirements">Security Requirements</a></li>
+</ul>
+</li>
+<li><a href="#difficulty-requirements">Difficulty Requirements</a><ul>
+<li><a href="#how-to-verify">How to Verify</a></li>
+</ul>
+</li>
+<li><a href="#anti-cheating-requirements">Anti-Cheating Requirements</a><ul>
+<li><a href="#required-measures">Required Measures</a></li>
+<li><a href="#red-flags">Red Flags</a></li>
+</ul>
+</li>
+<li><a href="#rubric-requirements">Rubric requirements</a></li>
+<li><a href="#automated-check-requirements">Automated Check Requirements</a><ul>
+<li><a href="#ci-checks-must-pass">CI Checks (Must Pass)</a></li>
+<li><a href="#llmaj-checks-must-pass">LLMaJ Checks (Must Pass)</a></li>
+</ul>
+</li>
+<li><a href="#summary-checklist">Summary Checklist</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

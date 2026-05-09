@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task Components · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Task Components — Terminus-2.0 documentation, section 03: Understanding Tasks.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class="active"><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-03">Understanding Tasks</a><span class="sep">/</span><span class="cur">Task Components</span></nav><header class="chapter-head"><div class="meta"><span class="num">10</span><span class="tag">Section 03 &middot; Understanding Tasks</span></div><h1>Task Components</h1></header><article><h1 id="task-components">Task Components</h1>
+<p>Every Harbor task consists of several required components. This guide explains each one and how they work together.</p>
+<blockquote>
+<p><strong>Note:</strong> Harbor is the evolution of Terminal-Bench. The task format has been updated to address common issues and improve developer experience. See the Harbor documentation for details on what changed.</p>
+</blockquote>
+<h2 id="file-structure">File Structure</h2>
+<div class="codehilite"><pre><span></span><code>my-task-folder/
+├── instruction.md          # Concise, human-styled instructions
+├── task.toml               # REQUIRED METADATA:
+│                           # - task_type
+│                           # - subcategories (if none, leave empty)
+│                           # - difficulty
+│                           # - codebase_size (minimal | small | large)
+│                           # - number_of_milestones (0 if no milestones)
+│                           # - languages
+│                           # - tags (3-6 keywords)
+│                           # - runtime_limits (agent/verifier/build)
+├── environment/            # Environment definition folder
+│   ├── Dockerfile          # Standard single-container setup
+│   ├── docker-compose.yaml # Optional: For multi-container tasks
+│   └── [build files]       # Any configs or scripts needed for the build phase
+├── solution/               # Reference Oracle solution
+│   ├── solve.sh            # Step-by-step shell script that reliably solves task
+│   └── [optional] solve1.sh...solveN.sh # Only include if your task has milestones (one per milestone)
+├── tests/                  # Test verification suite
+│   ├── test.sh             # Main entry point for verification
+│   ├── test_outputs.py     # Deterministic state validation (non-milestone tasks)
+│   └── [optional] test_m1.py...test_mN.py # Only include if your task has milestones (one per milestone)
+├── [optional] milestone_x.md # Only include these if your task has milestones.
+├── [optional files]        # Data files, assets, or sample code context
+└── README.md               # Optional: Contributor notes or extra documentation
+</code></pre></div>
+
+<h2 id="required-components">Required Components</h2>
+<h3 id="1-instructionmd">1. instruction.md</h3>
+<p>This file contains the instructions shown to the AI agent. We want this to be human written and mimic the style of how real Engineers prompt AI models in the real world. This means no highly-structured prompts, you can include spelling mistakes, etc. Truly want to mimic realistic prompting.</p>
+<p>The instructions should adhere to these six general principles:
+1. Task instructions <strong>must be concise.</strong>
+2. Task instructions <strong>must be well specified.</strong>
+3. Task instructions <strong>must be interesting.</strong>
+4. Task instruction <strong>must not give Answers, Hints.</strong>
+5. Task instruction <strong>must be unique.</strong>
+6. Task instruction <strong>must use absolute paths.</strong></p>
+<blockquote>
+<p><strong>For detailed guidance:</strong> See the Prompt Styling Guide</p>
+</blockquote>
+<h3 id="2-tasktoml">2. task.toml</h3>
+<p>Configuration and metadata file. Uses TOML format with nested sections for task configuration, metadata, and environment settings.</p>
+<p>This is a file that contains these required metadata:
+* <strong>Author name &amp; email</strong> (<code>author_name</code>, <code>author_email</code>): Anonymous is ok for both fields.
+* <strong>Difficulty</strong>: The accuracy (out of 5 attempts) for the frontier models described in the Difficulty section.
+* <strong>Task Type</strong>: Each task must have exactly one task type from the list of tasks defined in the Task Type section.
+* <strong>Task Subtype/subcategories</strong>: If your task has any subcategories it aligns with, then you will include each subtype it aligns to here. If no subcategories align with your task, leave this empty. See the Task Subtypes section for more information.
+* <strong>Number of Milestones</strong>: The number of milestones present in the task, if no milestones then use the value of <strong>0Codebase Size</strong>: One of <code>minimal</code>, <code>small</code>, or <code>large</code>—a rough scale of how many files in the task environment the agent operates on (not files the agent produces). Bands are minimal ≈ 0–20, small ≈ 20+, large ≈ 200+ files.
+* <strong>Runtime Limits</strong>: Each task must specify timeouts, including maximum agent runtime (agent_timeout_sec), maximum verifier runtime (verifier_timeout_sec), and maximum environment build runtime (environment_build_timeout_sec), to ensure tasks are bounded and reproducible.
+* <strong>Tags</strong>: Each task must include ~3-6 descriptive tags in the manifest. Tags are free-form keywords that capture important tools, libraries, techniques, or subtopics relevant to the task.</p>
+<p><strong>Basic structure:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Task configuration schema version</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span>
+
+<span class="c1"># Task metadata (author, difficulty, categorization)</span>
+<span class="k">[metadata]</span>
+<span class="n">author_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;anonymous&quot;</span>
+<span class="n">author_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;anonymous&quot;</span>
+<span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span>
+<span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;software-engineering&quot;</span>
+<span class="c1"># Options for subcategories are: &quot;long_context&quot;, &quot;tool_specific&quot;, &quot;api_integration&quot;, &quot;db_interaction&quot;, &quot;ui_building&quot;</span>
+<span class="n">subcategories</span><span class="w"> </span><span class="o">=</span>
+<span class="err"># The number of milestones in the task (can be zero if not a milestone task)</span>
+<span class="n">number_of_milestones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="c1"># Size of the codebase: minimal -&gt; 0-20 files, small -&gt; 20+ files, large -&gt; 200+ files. Count includes all files in the environment (not files the agent produces).</span>
+<span class="n">codebase_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;minimal&quot;</span>
+<span class="c1"># Coding languages used in the oracle solution or required by the agent</span>
+<span class="n">languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;bash&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># For tool_specific, api_integration, and db_interaction subcategories, please include specific tool, api framework, or database software</span>
+<span class="n">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;file-operations&quot;</span><span class="p">,]</span>
+<span class="c1"># Estimated time to complete (minutes)</span>
+<span class="n">expert_time_estimate_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span>
+<span class="n">junior_time_estimate_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
+
+<span class="c1"># Verifier: runs the test script to check task completion</span>
+<span class="k">[verifier]</span>
+<span class="n">timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">450.0</span>
+
+<span class="c1"># Agent: limits how long the agent can run when attempting the task</span>
+<span class="k">[agent]</span>
+<span class="n">timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">900.0</span>
+
+<span class="c1"># Sandbox environment limits</span>
+<span class="k">[environment]</span>
+<span class="n">build_timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">600.0</span>
+<span class="n">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">memory_mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4096</span>
+<span class="n">storage_mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10240</span>
+</code></pre></div>
+
+<h3 id="3-environment-folder">3. environment/ Folder</h3>
+<p>The environment definition must be placed in an <code>environment/</code> folder. This prevents accidentally copying <code>task.toml</code>, <code>instruction.md</code>, or test files into the container.</p>
+<p><strong>Required files depend on environment type:</strong>
+- For Docker: <code>environment/Dockerfile</code> OR <code>environment/docker-compose.yaml</code></p>
+<p><strong>Example Dockerfile:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c"># Pin base image (e.g. digest) — see task requirements</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim@sha256:&lt;digest&gt;</span>
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="c"># Install dependencies (pinned versions!)</span>
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.26.4<span class="w"> </span><span class="nv">pandas</span><span class="o">==</span><span class="m">2</span>.1.0
+
+<span class="c"># Copy task files</span>
+<span class="k">COPY</span><span class="w"> </span>app/<span class="w"> </span>/app/
+
+<span class="c"># Do NOT copy solution or tests</span>
+</code></pre></div>
+
+<p><strong>Important:</strong>
+- Pin all dependency versions and the <strong>base image</strong> (<code>FROM</code>, and any compose <code>image:</code> lines)
+- Never copy <code>solution/</code> or <code>tests/</code> in Dockerfile
+- No privileged mode
+- Build context stays in <code>environment/</code> folder, preventing accidental inclusion of task files</p>
+<p><strong>Special paths in the container:</strong>
+- <code>/logs/verifier/</code> - Contains reward file and verifier logs
+- <code>/logs/agent/</code> - Directory for agent logs
+- <code>/oracle/</code> - Solution folder copied here at runtime
+- <code>/tests/</code> - Tests folder copied here at runtime</p>
+<h3 id="4-oracle-solution-solutionsolvesh">4. Oracle Solution (solution/solve.sh)</h3>
+<p>Expert-authored step-by-step solution that reliably completes the task. The solution folder is copied to <code>/oracle/</code> at runtime and executed from the working directory.</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Navigate to the application</span>
+<span class="nb">cd</span><span class="w"> </span>/app
+
+<span class="c1"># Fix the bug by editing the file</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/def process(data):/def process(data):\n    if not data:\n        return /&#39;</span><span class="w"> </span>main.py
+
+<span class="c1"># Verify the fix</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from main import process; assert process(&#39;&#39;) == &quot;</span>
+</code></pre></div>
+
+<p><strong>Key principles:</strong>
+- Demonstrates the <strong>command sequence</strong>, not just the answer
+- Must be <strong>deterministic</strong> — same result every run
+- No hardcoded outputs (don't just <code>echo</code> the answer)
+- Can include <strong>dependencies</strong> (other files in <code>solution/</code> folder)
+- If no solution provided, Oracle agent cannot be used to sanity check</p>
+<p><strong>Milestone task requirements (Only if your task contains milestones):</strong>
+- Include <code>solution/solve1.sh</code> through <code>solution/solveN.sh</code> where <code>N = number_of_milestones</code>
+- Keep each <code>solveX.sh</code> independently scoped to milestone <code>X</code> only
+- Use a single <code>solution/solve.sh</code> to chain milestone solutions</p>
+<h3 id="5-tests-teststestsh">5. Tests (tests/test.sh)</h3>
+<p>The test script must be named <code>tests/test.sh</code> (renamed from <code>run-tests.sh</code>). This script installs test dependencies and verifies the agent completed the instruction.</p>
+<p><strong>Critical:</strong> The test script <strong>must produce a reward file</strong> in <code>/logs/verifier/</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Install test dependencies</span>
+<span class="nb">cd</span><span class="w"> </span>/tests
+uv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pytest
+
+<span class="c1"># Run tests</span>
+uvx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">3</span>.13<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span><span class="nv">pytest</span><span class="o">==</span><span class="m">8</span>.4.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span>pytest-json-ctrf<span class="o">==</span><span class="m">0</span>.3.5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>pytest<span class="w"> </span>--ctrf<span class="w"> </span>/logs/verifier/ctrf.json<span class="w"> </span>/tests/test_outputs.py<span class="w"> </span>-rA
+
+<span class="c1"># Produce reward file (REQUIRED)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/logs/verifier/reward.txt
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;<span class="w"> </span>/logs/verifier/reward.txt
+<span class="k">fi</span>
+</code></pre></div>
+
+<p><strong>Reward file formats:</strong>
+- <code>/logs/verifier/reward.txt</code> - Plain text (e.g., <code>1</code> for success, <code>0</code> for failure)
+- <code>/logs/verifier/reward.json</code> - JSON with multiple metrics: <code>{ "runtime_sec": 1.23, "accuracy": 0.95 }</code></p>
+<p>Harbor reads <code>reward.txt</code> by default and falls back to <code>reward.json</code>.</p>
+<p><strong>Key principles:</strong>
+- <strong>Must produce reward file</strong> - This is how Harbor determines success/failure
+- <strong>Always write the reward file</strong> - Including when tests fail or a step errors; the verifier must not finish without <code>reward.txt</code> (or <code>reward.json</code>). Failed tests should still result in a written reward (typically <code>0</code>), not a missing file
+- <strong>Use absolute paths</strong> - Recommended to avoid relative path issues
+- <strong>Can include dependencies</strong> - Other files in <code>tests/</code> folder are allowed
+- <strong>Informative</strong> - Tests should clearly verify requirements
+- <strong>Behavioral testing</strong> - Run code, don't parse it statically</p>
+<p><strong>Milestone task requirements (Only if your task contains milestones):</strong>
+- Include <code>tests/test_m1.py</code> through <code>tests/test_mN.py</code> where <code>N = number_of_milestones</code>
+- <code>test_mX.py</code> must validate and score only milestone <code>X</code> completion
+- Keep milestone tests aligned with milestone solutions (<code>solve1.sh</code> ↔ <code>test_m1.py</code>, etc.)</p>
+<p><strong>Example test file (tests/test_outputs.py):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Tests for the bug fix task.&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_empty_input_returns_empty_list</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify empty input is handled gracefully.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_normal_input_unchanged</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify normal behavior is preserved.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<h2 id="optional-components">Optional Components</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>milestone_x.md</td>
+<td>Only include in the root of your .zip if your task has milestones. Short description, 1-2 sentences per milestone. You must create a separate milestone_x.md file for each milestone. <strong>See details in Milestones page</strong></td>
+</tr>
+<tr>
+<td>Data files</td>
+<td>Input data, config files, sample databases</td>
+</tr>
+<tr>
+<td>Custom tools</td>
+<td>Additional scripts or binaries</td>
+</tr>
+<tr>
+<td>Multiple containers</td>
+<td>Complex multi-service environments</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="validation-checklist">Validation Checklist</h2>
+<p>Before submission, verify:</p>
+<ul>
+<li><code>instruction.md</code> is clear and explicit</li>
+<li><code>task.toml</code> has all required configuration sections</li>
+<li>Environment files are in <code>environment/</code> folder</li>
+<li>Dockerfile/docker-compose.yaml builds successfully</li>
+<li>Dependencies and base image have pinned versions</li>
+<li>Solution demonstrates command sequence (if provided)</li>
+<li><code>tests/test.sh</code> always produces <code>/logs/verifier/reward.txt</code> or <code>/logs/verifier/reward.json</code> (including on test failure or error)</li>
+<li>All behavior in <code>instruction.md</code> has corresponding tests</li>
+<li>All behavior in tests is described in <code>instruction.md</code></li>
+<li>No solution/test files copied in Dockerfile</li>
+<li>Environment folder structure prevents accidental file copying</li>
+</ul>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Write task instructions — Detailed guide for writing <code>instruction.md</code></li>
+<li>Learn the task taxonomy</li>
+<li>See example tasks</li>
+<li>Create your first task</li>
+</ul></article><nav class="pager"><a class="prev" href="../03-understanding-tasks/09-what-makes-a-good-task.html"><span class="dir">&larr; Previous</span><span class="lbl">What Makes A Good Task</span></a><a class="next" href="../03-understanding-tasks/11-task-requirements.html"><span class="dir">Next &rarr;</span><span class="lbl">Task Requirements</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#file-structure">File Structure</a></li>
+<li><a href="#required-components">Required Components</a><ul>
+<li><a href="#1-instructionmd">1. instruction.md</a></li>
+<li><a href="#2-tasktoml">2. task.toml</a></li>
+<li><a href="#3-environment-folder">3. environment/ Folder</a></li>
+<li><a href="#4-oracle-solution-solutionsolvesh">4. Oracle Solution (solution/solve.sh)</a></li>
+<li><a href="#5-tests-teststestsh">5. Tests (tests/test.sh)</a></li>
+</ul>
+</li>
+<li><a href="#optional-components">Optional Components</a></li>
+<li><a href="#validation-checklist">Validation Checklist</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

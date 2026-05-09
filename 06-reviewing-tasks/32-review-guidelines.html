@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review Guidelines · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Review Guidelines — Terminus-2.0 documentation, section 06: Reviewing Tasks.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class="active"><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-06">Reviewing Tasks</a><span class="sep">/</span><span class="cur">Review Guidelines</span></nav><header class="chapter-head"><div class="meta"><span class="num">32</span><span class="tag">Section 06 &middot; Reviewing Tasks</span></div><h1>Review Guidelines</h1></header><article><h1 id="review-guidelines">Review Guidelines</h1>
+<p>Guidelines for peer reviewers evaluating submitted tasks.</p>
+<h2 id="reviewer-checklist">Reviewer Checklist</h2>
+<p>As a helpful tool to use while reviewing, we have a comprehensive reviewer checklist that covers all aspects that should be looked at during a review. This includes descritions of what we are looking for qualitatively, as well as assigns a severity level that establishes if an error for a given aspect of a submission should result in an Accept still, or if it always requires the submission to be sent back for revisions when encountered.</p>
+<p><strong>Go to Reviewer Checklist</strong></p>
+<h2 id="review-philosophy">Review Philosophy</h2>
+<p>As a reviewer, you're ensuring quality for the benchmark. Your goal is to:
+- Catch issues before they enter the dataset
+- Help contributors improve their tasks
+- Maintain consistency across submissions</p>
+<blockquote>
+<p><strong>Remember:</strong> Each review you conduct should be comprehensive and catch ALL present errors and issues with the task. Do not simply find the first error you come across and then immediately send it back for revision. Instead, <strong>find all issues</strong> during your review and give feedback on all elements found.</p>
+</blockquote>
+<p><em>If the EC addresses your comments, the task should be ready for acceptance, assuming no new issues appear. In other words, your feedback should be always clear, complete, and actionable.</em></p>
+<h2 id="review-checklist">Review Checklist</h2>
+<h3 id="1-read-the-task-description">1. Read the Task Description</h3>
+<h3 id="authentic-prompt-styling">Authentic Prompt Styling</h3>
+<p>We have overhauled the way instructions are written. In Edition 2, the <code>instruction.md</code> file should index on <strong>realistic prompts</strong> that real users and engineers would use when interacting with coding agents in their daily life, and be as succinct as possible.</p>
+<p>The instructions for every task should adhere to these six general principles:
+1. Task instructions <strong>must be concise.</strong>
+2. Task instructions <strong>must be well specified.</strong>
+3. Task instructions <strong>must be interesting.</strong>
+4. Task instruction <strong>must not give answers, hints.</strong>
+5. Task instruction <strong>must be unique.</strong>
+6. Task instruction <strong>must use absolute paths.Consult the Prompt Styling Guide for further details on each core principle.</strong></p>
+<h3 id="2-review-tests">2. Review Tests</h3>
+<ul>
+<li>Every requirement has a corresponding test</li>
+<li>Tests have informative docstrings</li>
+<li>Tests verify behavior, not implementation</li>
+<li>No brittle string matching</li>
+<li>No hardcoded thresholds (or thresholds are reasonable)</li>
+</ul>
+<h3 id="3-use-the-test-quality-eval-to-double-check-your-work">3. Use the Test-Quality Eval to Double-Check Your Work</h3>
+<p>There is an automated <strong>test-quality</strong> eval on submissions that flags common gaps so you can double-check. <strong>It is a helper, not a replacement:</strong> still do a full test review, and <strong>verify every flag</strong> — the eval will miss some issues and sometimes flag acceptable tests.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>req-gap</code></td>
+<td>Instruction requires something, but no test asserts it.</td>
+</tr>
+<tr>
+<td><code>weak-assertion</code></td>
+<td>A test exists but is too loose to catch wrong solutions.</td>
+</tr>
+<tr>
+<td><code>phantom-spec</code></td>
+<td>Tests enforce behavior not described in the instruction.</td>
+</tr>
+<tr>
+<td><code>flaky-execution</code></td>
+<td>A correct solution can fail due to timing, non-determinism, or infra.</td>
+</tr>
+<tr>
+<td><code>vacuous-test</code></td>
+<td>Test can pass no matter the output (e.g. empty loops, always-true checks).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>How to use it:</strong> Complete your normal test review, then go through any eval flags you might have missed.</p>
+<h3 id="4-check-solution">4. Check Solution</h3>
+<ul>
+<li>Solution demonstrates the process (not just outputs answer)</li>
+<li>Commands are deterministic</li>
+<li>Works in the provided environment</li>
+</ul>
+<h3 id="5-verify-metadata">5. Verify Metadata</h3>
+<ul>
+<li>Difficulty matches expected pass rate</li>
+<li>Category is appropriate</li>
+<li>Time estimates are realistic</li>
+<li>Timeout is sufficient but not excessive</li>
+</ul>
+<h3 id="6-watch-agent-runs">6. Watch Agent Runs</h3>
+<p><strong>Solvable vs. passing a run:</strong> <em>Passing a run</em> means all unit tests pass in a single run. <em>Solvable</em> (for the task) means that <strong>across 10 runs</strong>, each individual test passes at least once—so a task can have no full pass in any run and still be solvable if the agent only ever “partially” succeeds.</p>
+<p>On the task viewer:
+- Watch the terminal recording
+- If agent fails, is it failing for a <strong>good reason</strong>?
+- Check the analysis for identified issues
+- Read the debug pane</p>
+<h3 id="comprehensive-reviewer-checklist">Comprehensive Reviewer Checklist</h3>
+<ul>
+<li>You can also use this Reviewer Checklist for a more comprehensive and detailed checklist</li>
+</ul>
+<h2 id="common-issues-to-flag">Common Issues to Flag</h2>
+<h3 id="task-description-problems">Task Description Problems</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>What to Look For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ambiguous requirements</td>
+<td>"Make it better", "fix the issues"</td>
+</tr>
+<tr>
+<td>Missing output specs</td>
+<td>Tests check files not mentioned</td>
+</tr>
+<tr>
+<td>Relative paths</td>
+<td><code>./data/file.txt</code> instead of <code>/app/data/file.txt</code></td>
+</tr>
+<tr>
+<td>Implicit assumptions</td>
+<td>Assumes knowledge not in instructions</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="test-problems">Test Problems</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>What to Look For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brittle tests</td>
+<td>Exact string matching</td>
+</tr>
+<tr>
+<td>Missing coverage</td>
+<td>Requirements without tests</td>
+</tr>
+<tr>
+<td>Order dependency</td>
+<td>Tests that must run in sequence</td>
+</tr>
+<tr>
+<td>Implementation testing</td>
+<td>Parsing source code</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="solution-problems">Solution Problems</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>What to Look For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hardcoded answers</td>
+<td><code>echo "42" &gt; result.txt</code></td>
+</tr>
+<tr>
+<td>Non-deterministic</td>
+<td>Uses random without seed</td>
+</tr>
+<tr>
+<td>Incomplete</td>
+<td>Missing steps</td>
+</tr>
+<tr>
+<td>Over-complex</td>
+<td>Unnecessarily convoluted</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="specific-things-to-watch">Specific Things to Watch</h2>
+<h3 id="testing-behavior">Testing Behavior</h3>
+<blockquote>
+<p>It is almost always better to test a behavior by actually running the code than trying to statically analyze it.</p>
+</blockquote>
+<p><strong>Flag:</strong> Tests that grep through source code looking for patterns.</p>
+<h3 id="tool-specifications">Tool Specifications</h3>
+<blockquote>
+<p>Task instructions shouldn't mention specific tools unless there's a way to verify they were used.</p>
+</blockquote>
+<p><strong>Flag:</strong> "Use vim to edit the file" (can't verify vim was used).</p>
+<h3 id="randomness">Randomness</h3>
+<blockquote>
+<p>Tasks involving randomness MUST NOT assume the solution matches that same random order.</p>
+</blockquote>
+<p><strong>Flag:</strong> Tests that depend on specific <code>np.random.seed</code> values.</p>
+<h3 id="test-complexity">Test Complexity</h3>
+<blockquote>
+<p>Long test files are almost always wrong since more tests means more opportunities for error.</p>
+</blockquote>
+<p><strong>Flag:</strong> test_outputs.py with 20+ tests for a simple task.</p>
+<h3 id="data-formats">Data Formats</h3>
+<blockquote>
+<p>Be especially paranoid about specifying data formats.</p>
+</blockquote>
+<p><strong>Flag:</strong> "Output a CSV" without specifying whether it needs headers.</p>
+<h3 id="anti-cheating">Anti-Cheating</h3>
+<p>Think about how agents could cheat:
+- Decompile programs to find hidden answers
+- Replace programs with dummy versions
+- Delete or modify tests
+- Access newer git commits</p>
+<h2 id="review-actions">Review Actions</h2>
+<h3 id="approve">Approve</h3>
+<p>Task is ready. No issues found.</p>
+<h3 id="request-changes">Request Changes</h3>
+<p>Issues need fixing before acceptance. Be specific:
+- What's wrong
+- Where it is
+- How to fix it</p>
+<p><strong>Good feedback:</strong></p>
+<blockquote>
+<p>The test <code>test_output_format</code> on line 45 uses exact string matching. Please change to check for required fields instead, allowing for formatting variations.</p>
+</blockquote>
+<p><strong>Bad feedback:</strong></p>
+<blockquote>
+<p>Tests need work.</p>
+</blockquote>
+<p><strong>Extra things you can include</strong>
+- Point the submitter where can they found how to fix the issue or a place where they can see they are mistaken</p>
+<blockquote>
+<p>Check the New: Rubrics section in the trainig site</p>
+</blockquote>
+<h3 id="decline">Decline</h3>
+<p>Fundamental issues that can't be easily fixed:
+- Too easy (&gt; 80% pass rate consistently)
+- Essentially duplicate of existing task
+- Core concept is flawed</p>
+<p>Explain clearly why, and whether revision could salvage it.</p>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Reviewer Checklist — Full high/medium/low acceptance criteria for reviews</li>
+<li>Reviewer Training — Training videos and materials for reviewers</li>
+<li>Rubrics — How to write and review rubrics for evaluating agent traces</li>
+<li>Quality Guidelines — Required quality standards for all tasks</li>
+<li>Common errors to watch for</li>
+</ul></article><nav class="pager"><a class="prev" href="../05-testing-and-validation/31-agent-review-reference.html"><span class="dir">&larr; Previous</span><span class="lbl">Agent Review Reference</span></a><a class="next" href="../06-reviewing-tasks/33-reviewer-checklist.html"><span class="dir">Next &rarr;</span><span class="lbl">Reviewer Checklist</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#reviewer-checklist">Reviewer Checklist</a></li>
+<li><a href="#review-philosophy">Review Philosophy</a></li>
+<li><a href="#review-checklist">Review Checklist</a><ul>
+<li><a href="#1-read-the-task-description">1. Read the Task Description</a></li>
+<li><a href="#authentic-prompt-styling">Authentic Prompt Styling</a></li>
+<li><a href="#2-review-tests">2. Review Tests</a></li>
+<li><a href="#3-use-the-test-quality-eval-to-double-check-your-work">3. Use the Test-Quality Eval to Double-Check Your Work</a></li>
+<li><a href="#4-check-solution">4. Check Solution</a></li>
+<li><a href="#5-verify-metadata">5. Verify Metadata</a></li>
+<li><a href="#6-watch-agent-runs">6. Watch Agent Runs</a></li>
+<li><a href="#comprehensive-reviewer-checklist">Comprehensive Reviewer Checklist</a></li>
+</ul>
+</li>
+<li><a href="#common-issues-to-flag">Common Issues to Flag</a><ul>
+<li><a href="#task-description-problems">Task Description Problems</a></li>
+<li><a href="#test-problems">Test Problems</a></li>
+<li><a href="#solution-problems">Solution Problems</a></li>
+</ul>
+</li>
+<li><a href="#specific-things-to-watch">Specific Things to Watch</a><ul>
+<li><a href="#testing-behavior">Testing Behavior</a></li>
+<li><a href="#tool-specifications">Tool Specifications</a></li>
+<li><a href="#randomness">Randomness</a></li>
+<li><a href="#test-complexity">Test Complexity</a></li>
+<li><a href="#data-formats">Data Formats</a></li>
+<li><a href="#anti-cheating">Anti-Cheating</a></li>
+</ul>
+</li>
+<li><a href="#review-actions">Review Actions</a><ul>
+<li><a href="#approve">Approve</a></li>
+<li><a href="#request-changes">Request Changes</a></li>
+<li><a href="#decline">Decline</a></li>
+</ul>
+</li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

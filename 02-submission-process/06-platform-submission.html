@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform Submission · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Platform Submission — Terminus-2.0 documentation, section 02: Submission Process.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class="active"><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class=""><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-02">Submission Process</a><span class="sep">/</span><span class="cur">Platform Submission</span></nav><header class="chapter-head"><div class="meta"><span class="num">06</span><span class="tag">Section 02 &middot; Submission Process</span></div><h1>Platform Submission</h1></header><article><h1 id="platform-submission-guide">Platform Submission Guide</h1>
+<p>Complete step-by-step guide for creating and submitting tasks through the Cognyzer Expert Platform.</p>
+<h2 id="high-level-workflow">High-Level Workflow</h2>
+<p>Tasking is performed through the <strong>Terminus-2nd-Edition</strong> project on the Cognyzer Expert Platform. The complete workflow:</p>
+<ol>
+<li>Download the correct task skeleton template. <em>There are 3!</em></li>
+<li>Extract and rename the folder</li>
+<li>Write your task instructions and configure metadata</li>
+<li>Set up the Docker environment</li>
+<li>Create and test your solution</li>
+<li>Write and verify tests</li>
+<li>Run agents</li>
+<li>Create ZIP file, check rubric generation checkbox, and Submit on platform</li>
+<li>Review CI feedback and iterate + review generated rubric and edit for accuracy and completeness</li>
+<li>When CI is passing, submit on platform to a reviewer</li>
+</ol>
+<hr>
+<h2 id="step-1-download-the-correct-task-skeleton">Step 1: Download the Correct Task Skeleton</h2>
+<p>Choose and download the appropriate task skeleton template for your task type:</p>
+<p>There are 3 task skeletons to choose from:
+ - <strong><em>"Regular"</em> Task Skeleton:</strong> Use for all non-UI-Building and non-Milestone tasks
+ - <strong>UI Task Skeleton:</strong> Use for all UI-Building subtype tasks
+ - <strong>Milestone Task Skeleton:</strong> Use for all tasks which contain milestones</p>
+<p><pdf-download src="/Terminus-EC-Training-stateful/Terminus-2nd-Edition/default-template.zip" title="Download Regular Task Skeleton"></pdf-download></p>
+<p><pdf-download src="/Terminus-EC-Training-stateful/Terminus-2nd-Edition/milestone-template.zip" title="Download Milestone Task Skeleton"></pdf-download></p>
+<p><pdf-download src="/Terminus-EC-Training-stateful/Terminus-2nd-Edition/ui-template.zip" title="Download UI Task Skeleton"></pdf-download></p>
+<h2 id="step-2-extract-and-rename">Step 2: Extract and Rename</h2>
+<ol>
+<li>Extract the ZIP file to your desired location</li>
+<li><strong>Rename the folder</strong> to match your task name (use kebab-case, e.g., <code>fix-memory-leak-python</code>)</li>
+</ol>
+<h2 id="step-3-write-task-instructions-and-configuration">Step 3: Write Task Instructions and Configuration</h2>
+<h3 id="author-your-instructionmd">Author your instruction.md</h3>
+<p>See the Prompt Styling Guide for detailed instructions and requirements about how you should style your instructions.</p>
+<h3 id="configure-tasktoml">Configure task.toml</h3>
+<p>Set up metadata and configuration:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Task configuration schema version</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span>
+
+<span class="c1"># Task metadata (author, difficulty, categorization)</span>
+<span class="k">[metadata]</span>
+<span class="n">author_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;anonymous&quot;</span>
+<span class="n">author_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;anonymous&quot;</span>
+<span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span>
+<span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;software-engineering&quot;</span>
+<span class="c1"># Options for subcategories are: &quot;long_context&quot;, &quot;tool_specific&quot;, &quot;api_integration&quot;, &quot;db_interaction&quot;, &quot;ui_building&quot;</span>
+<span class="n">subcategories</span><span class="w"> </span><span class="o">=</span>
+<span class="err"># The number of milestones in the task (can be zero if not a milestone task)</span>
+<span class="n">number_of_milestones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="c1"># Size of the codebase: minimal -&gt; 0-20 files, small -&gt; 20+ files, large -&gt; 200+ files. Include all files in the environment when counting.</span>
+<span class="n">codebase_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;minimal&quot;</span>
+<span class="c1"># Coding languages used in the oracle solution or required by the agent</span>
+<span class="n">languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;bash&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># For tool_specific, api_integration, and db_interaction subcategories, please include specific tool, api framework, or database software</span>
+<span class="n">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;file-operations&quot;</span><span class="p">,]</span>
+<span class="c1"># Estimated time to complete (minutes)</span>
+<span class="n">expert_time_estimate_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span>
+<span class="n">junior_time_estimate_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
+
+<span class="c1"># Verifier: runs the test script to check task completion</span>
+<span class="k">[verifier]</span>
+<span class="n">timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">450.0</span>
+
+<span class="c1"># Agent: limits how long the agent can run when attempting the task</span>
+<span class="k">[agent]</span>
+<span class="n">timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">900.0</span>
+
+<span class="c1"># Sandbox environment limits</span>
+<span class="k">[environment]</span>
+<span class="n">build_timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">600.0</span>
+<span class="n">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">memory_mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4096</span>
+<span class="n">storage_mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10240</span>
+</code></pre></div>
+
+<h2 id="step-4-configure-docker-environment">Step 4: Configure Docker Environment</h2>
+<p>Edit the <code>environment/Dockerfile</code> to set up your task environment:</p>
+<ul>
+<li>Add any dependencies required by your task</li>
+<li>Pin all package versions for reproducibility</li>
+<li>Never copy <code>solution/</code> or <code>tests/</code> folders in the Dockerfile</li>
+</ul>
+<p>For multi-container environments or custom configurations, see the Docker environment documentation.</p>
+<h3 id="docker-troubleshooting">Docker Troubleshooting</h3>
+<p>If you encounter Docker issues:</p>
+<ol>
+<li>Ensure Docker Desktop is running</li>
+<li>On macOS, enable in Advanced Settings: <strong>"Allow the default Docker socket to be used (requires password)"</strong></li>
+<li>Try these commands if needed:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>dscl<span class="w"> </span>.<span class="w"> </span>create<span class="w"> </span>/Groups/docker
+sudo<span class="w"> </span>dseditgroup<span class="w"> </span>-o<span class="w"> </span>edit<span class="w"> </span>-a<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>-t<span class="w"> </span>user<span class="w"> </span>docker
+</code></pre></div>
+
+<h2 id="step-5-test-your-solution-locally">Step 5: Test Your Solution Locally</h2>
+<p>Enter your task container interactively to test your solution:</p>
+<div class="codehilite"><pre><span></span><code>harbor<span class="w"> </span>tasks<span class="w"> </span>start-env<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;<span class="w"> </span>-i
+</code></pre></div>
+
+<p>While in the container, test your solution approach to ensure it works as expected.</p>
+<h2 id="step-6-create-solution-file">Step 6: Create Solution File</h2>
+<p>Create <code>solution/solve.sh</code> with the verified commands:</p>
+<ul>
+<li>This file is used by the Oracle agent to verify the task is solvable</li>
+<li>Must be deterministic (same result every run)</li>
+<li>Should demonstrate the command sequence, not just output the answer</li>
+<li>For milestone tasks: also create <code>solution/solve1.sh</code> ... <code>solution/solveN.sh</code>; each must be independently scoped to milestone <code>X</code>, and <code>solve.sh</code> must chain them in order</li>
+</ul>
+<p>See Writing Oracle Solution for guidance.</p>
+<h2 id="step-7-write-tests">Step 7: Write Tests</h2>
+<p>Create <code>tests/test.sh</code> and test files to verify task completion:</p>
+<ul>
+<li>The test script must produce <code>/logs/verifier/reward.txt</code></li>
+<li>Create pytest unit tests in <code>tests/test_outputs.py</code> (or similar)</li>
+<li>Place any test dependencies in the <code>tests/</code> directory</li>
+<li>For milestone tasks: create <code>tests/test_m1.py</code> ... <code>tests/test_mN.py</code>, and ensure each <code>test_mX.py</code> scores only milestone <code>X</code> completion</li>
+</ul>
+<p>Tests must fully cover the prompt: explicit requirements, implicitly expected behavior, and critical edge cases—with every prompt requirement mapped to a test. See Writing Tests for detail.</p>
+<p><strong>Example test.sh:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Install curl</span>
+apt-get<span class="w"> </span>update
+apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl
+
+<span class="c1"># Install uv</span>
+curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/0.9.5/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+
+<span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/.local/bin/env
+
+<span class="c1"># Check if we&#39;re in a valid working directory</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: No working directory set. Please set a WORKDIR in your Dockerfile before running this script.&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="c1"># Don&#39;t change anything below this line</span>
+uvx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">3</span>.13<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span><span class="nv">pytest</span><span class="o">==</span><span class="m">8</span>.4.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span>pytest-json-ctrf<span class="o">==</span><span class="m">0</span>.3.5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>pytest<span class="w"> </span>--ctrf<span class="w"> </span>/logs/verifier/ctrf.json<span class="w"> </span>/tests/test_outputs.py<span class="w"> </span>-rA
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/logs/verifier/reward.txt
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;<span class="w"> </span>/logs/verifier/reward.txt
+<span class="k">fi</span>
+</code></pre></div>
+
+<p>See Writing Tests for detailed guidance.</p>
+<h2 id="step-8-run-oracle-agent">Step 8: Run Oracle Agent</h2>
+<p>Verify your solution passes all tests:</p>
+<div class="codehilite"><pre><span></span><code>harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>oracle<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<p>This should <strong>PASS</strong>. If it doesn't, fix issues before proceeding.</p>
+<h2 id="step-9-test-with-real-agents">Step 9: Test with Real Agents</h2>
+<ol>
+<li>Set up your API key (received via email):</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>&lt;your-portkey-api-key&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_BASE_URL</span><span class="o">=</span>https://api.portkey.ai/v1
+</code></pre></div>
+
+<ol start="2">
+<li>Run with GPT-5:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>openai/@openai/gpt-5.2<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<ol start="3">
+<li>Run with Claude Opus 4.6:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>anthropic/@anthropic/claude-opus-4-6<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<p>Run each agent 2-3 times to gauge pass rate. Your task should have &lt; 80% pass rate to be accepted.</p>
+<h2 id="step-10-run-llmaj-checks-locally">Step 10: Run LLMaJ Checks Locally</h2>
+<p>Run LLMaJ checks before submitting:</p>
+<p><strong>GPT-5:</strong></p>
+<div class="codehilite"><pre><span></span><code>harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>openai/@openai/gpt-5.2<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<p><strong>Claude Opus 4.6:</strong></p>
+<div class="codehilite"><pre><span></span><code>harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>terminus-2<span class="w"> </span>-m<span class="w"> </span>anthropic/@anthropic/claude-opus-4-6<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+</code></pre></div>
+
+<p>All checks should pass before submission.</p>
+<h2 id="step-11-final-verification">Step 11: Final Verification</h2>
+<p>Before submitting, verify:</p>
+<ul>
+<li>Oracle agent passes</li>
+<li>All LLMaJ checks pass</li>
+<li>Tested against real agents (pass rate &lt; 80%)</li>
+<li>All files are present and correct</li>
+</ul>
+<p>Run final checks:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Oracle agent</span>
+harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </span>oracle<span class="w"> </span>-p<span class="w"> </span>&lt;task-folder&gt;
+
+<span class="c1"># LLMaJ checks</span>
+harbor<span class="w"> </span>tasks<span class="w"> </span>check<span class="w"> </span>-m<span class="w"> </span>openai/@openai/gpt-5.2<span class="w"> </span>harbor_tasks/&lt;task_name&gt;
+</code></pre></div>
+
+<h2 id="step-12-create-zip-file">Step 12: Create ZIP File</h2>
+<p><strong>Important:</strong> Select the individual files inside your task folder, not the folder itself.</p>
+<div class="codehilite"><pre><span></span><code>.
+├── instruction.md   ← Select these
+├── task.toml       ←
+├── environment/     ←
+│   ├── Dockerfile   ← (or docker-compose.yaml)
+│   └── [build files]
+├── solution/        ←
+│   └── solve.sh
+└── tests/           ←
+    ├── test.sh
+    └── [test files]
+</code></pre></div>
+
+<p><strong>On macOS:</strong>
+1. Open the task folder
+2. Select all files (<code>Cmd+A</code>)
+3. Right-click → Compress</p>
+<p><strong>On Windows:</strong>
+1. Open the task folder
+2. Select all files (<code>Ctrl+A</code>)
+3. Right-click → Send to → Compressed folder</p>
+<h2 id="step-13-submit-to-platform">Step 13: Submit to Platform</h2>
+<ol>
+<li>Go to the Cognyzer Expert Platform</li>
+<li>Navigate to <strong>Terminus-2nd-Edition</strong></li>
+<li>Click <strong>Start</strong> on the <em>Submission</em> node</li>
+<li>Upload your ZIP file</li>
+<li>Keep "Send to reviewer" unchecked</li>
+<li>Check the rubrics checkbox</li>
+<li>Submit</li>
+</ol>
+<h2 id="step-14-check-ci-results-and-rubric-then-iterate-until-ci-looks-good">Step 14: Check CI results and rubric then Iterate until CI looks good</h2>
+<ol>
+<li>After email notification that your submission is now back in your revision queue, go to Cognyzer Expert Platform.</li>
+<li>Find your task on homescreen</li>
+<li>Click "Revise"</li>
+<li>Check CI Results &amp; update task as needed</li>
+<li>Check the now generated rubric and edit it within the textbox for accuracy and completeness</li>
+<li>Re-upload a new .zip file if necessary
+   - Use the Reviewer Checklist to confirm you have addressed high-severity review criteria before resubmitting.
+   - <em>If you make any significant changes to your task, you must update your rubric accordingly in order to align with the current version of your task.</em></li>
+<li>Keep "Send to Reviewer" Unchecked</li>
+<li>Submit</li>
+</ol>
+<h2 id="step-15-submit-your-task-to-reviewer">Step 15: Submit your task to Reviewer</h2>
+<ol>
+<li>After email notification that your submission is now back in your revision queue, go to Cognyzer Expert Platform.</li>
+<li>Find your task on homescreen</li>
+<li>Click "Revise"</li>
+<li>Check CI results</li>
+<li>Check rubric and edit for accuracy and completeness</li>
+<li>If all good, check "Send to Reviewer"</li>
+<li>Submit</li>
+</ol>
+<h2 id="step-16-monitor-status">Step 16: Monitor Status</h2>
+<p>After submission. wait for peer review (1-3 business days)</p>
+<hr>
+<h2 id="after-submission">After Submission</h2>
+<h3 id="review-process">Review Process</h3>
+<ol>
+<li><strong>Automated checks</strong> runs immediately</li>
+<li><strong>Peer review</strong> within 1-3 business days</li>
+<li><strong>Feedback</strong> provided if changes needed</li>
+<li><strong>Acceptance</strong> when all criteria met</li>
+</ol>
+<h3 id="if-changes-requested">If Changes Requested</h3>
+<ol>
+<li>Review the feedback carefully</li>
+<li>Make requested changes locally</li>
+<li>Re-run all checks</li>
+<li>Create new ZIP and resubmit</li>
+</ol>
+<hr>
+<h2 id="common-issues">Common Issues</h2>
+<h3 id="zip-structure-wrong">ZIP Structure Wrong</h3>
+<p><strong>Problem:</strong> Files nested in extra folder.</p>
+<p><strong>Fix:</strong> ZIP the files directly, not the containing folder.</p>
+<h3 id="missing-files">Missing Files</h3>
+<p><strong>Problem:</strong> Forgot to include a file.</p>
+<p><strong>Fix:</strong> Verify all files are in ZIP before uploading. Check that <code>instruction.md</code>, <code>task.toml</code>, <code>environment/</code>, <code>solution/</code>, and <code>tests/</code> are all included.</p>
+<ul>
+<li>If milestones in task, <code>milestones.md</code> must be included in the root of the <code>.zip</code>.</li>
+<li>If milestones in task, include <code>solution/solve1.sh</code> ... <code>solution/solveN.sh</code> and <code>tests/test_m1.py</code> ... <code>tests/test_mN.py</code>.</li>
+</ul>
+<h3 id="ci-failures-after-upload">CI Failures After Upload</h3>
+<p><strong>Problem:</strong> Local checks passed but platform CI fails.</p>
+<p><strong>Fix:</strong> Check for environment differences, re-run locally with exact CI commands.</p>
+<h3 id="docker-build-fails">Docker Build Fails</h3>
+<p><strong>Problem:</strong> Docker build fails on platform but works locally.</p>
+<p><strong>Fix:</strong> Ensure all dependencies are pinned to specific versions, <strong>including the Docker base image</strong> (and any images in <code>docker-compose.yaml</code>). Check for platform-specific differences.</p>
+<hr>
+<h2 id="video-walkthroughs">Video Walkthroughs</h2>
+<p>Watch these step-by-step videos to learn how to create and test your task:</p>
+<h3 id="1-running-your-task">1. Running Your Task</h3>
+<p><video-loom id="22449b76123d41e6abff0efb39d0b960" title="Running your task"></video-loom></p>
+<h3 id="2-creating-a-solutionsolvesh">2. Creating a solution/solve.sh</h3>
+<p><video-loom id="140f2cf8f16d404abf5cbd7dcc66b7cb" title="Creating a solution/solve.sh"></video-loom>
+The video refers to solution/solve.sh file. Using Harbor, this refers to solution/solve.sh</p>
+<h3 id="3-creating-tests-for-your-task">3. Creating Tests for Your Task</h3>
+<p><video-loom id="a00541ff2787464c84bf4601415ee624" title="Creating tests for your task"></video-loom></p>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Understand task components</li>
+<li>Review the submission checklist</li>
+<li>Reviewer Checklist</li>
+<li>Learn about CI checks</li>
+<li>Understand the review process</li>
+</ul></article><nav class="pager"><a class="prev" href="../01-getting-started/05-edition1-to-edition2-changes.html"><span class="dir">&larr; Previous</span><span class="lbl">Edition1 To Edition2 Changes</span></a><a class="next" href="../02-submission-process/07-submission-checklist.html"><span class="dir">Next &rarr;</span><span class="lbl">Submission Checklist</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#high-level-workflow">High-Level Workflow</a></li>
+<li><a href="#step-1-download-the-correct-task-skeleton">Step 1: Download the Correct Task Skeleton</a></li>
+<li><a href="#step-2-extract-and-rename">Step 2: Extract and Rename</a></li>
+<li><a href="#step-3-write-task-instructions-and-configuration">Step 3: Write Task Instructions and Configuration</a><ul>
+<li><a href="#author-your-instructionmd">Author your instruction.md</a></li>
+<li><a href="#configure-tasktoml">Configure task.toml</a></li>
+</ul>
+</li>
+<li><a href="#step-4-configure-docker-environment">Step 4: Configure Docker Environment</a><ul>
+<li><a href="#docker-troubleshooting">Docker Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#step-5-test-your-solution-locally">Step 5: Test Your Solution Locally</a></li>
+<li><a href="#step-6-create-solution-file">Step 6: Create Solution File</a></li>
+<li><a href="#step-7-write-tests">Step 7: Write Tests</a></li>
+<li><a href="#step-8-run-oracle-agent">Step 8: Run Oracle Agent</a></li>
+<li><a href="#step-9-test-with-real-agents">Step 9: Test with Real Agents</a></li>
+<li><a href="#step-10-run-llmaj-checks-locally">Step 10: Run LLMaJ Checks Locally</a></li>
+<li><a href="#step-11-final-verification">Step 11: Final Verification</a></li>
+<li><a href="#step-12-create-zip-file">Step 12: Create ZIP File</a></li>
+<li><a href="#step-13-submit-to-platform">Step 13: Submit to Platform</a></li>
+<li><a href="#step-14-check-ci-results-and-rubric-then-iterate-until-ci-looks-good">Step 14: Check CI results and rubric then Iterate until CI looks good</a></li>
+<li><a href="#step-15-submit-your-task-to-reviewer">Step 15: Submit your task to Reviewer</a></li>
+<li><a href="#step-16-monitor-status">Step 16: Monitor Status</a></li>
+<li><a href="#after-submission">After Submission</a><ul>
+<li><a href="#review-process">Review Process</a></li>
+<li><a href="#if-changes-requested">If Changes Requested</a></li>
+</ul>
+</li>
+<li><a href="#common-issues">Common Issues</a><ul>
+<li><a href="#zip-structure-wrong">ZIP Structure Wrong</a></li>
+<li><a href="#missing-files">Missing Files</a></li>
+<li><a href="#ci-failures-after-upload">CI Failures After Upload</a></li>
+<li><a href="#docker-build-fails">Docker Build Fails</a></li>
+</ul>
+</li>
+<li><a href="#video-walkthroughs">Video Walkthroughs</a><ul>
+<li><a href="#1-running-your-task">1. Running Your Task</a></li>
+<li><a href="#2-creating-a-solutionsolvesh">2. Creating a solution/solve.sh</a></li>
+<li><a href="#3-creating-tests-for-your-task">3. Creating Tests for Your Task</a></li>
+</ul>
+</li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

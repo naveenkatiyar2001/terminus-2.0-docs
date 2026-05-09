@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing Tests · Terminus-2.0 Docs · Cognyzer</title>
+<meta name="description" content="Writing Tests — Terminus-2.0 documentation, section 04: Creating Tasks.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>pre { line-height: 125%; }
+td.linenos .normal { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #e6edf3; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #6e7681 }
+.codehilite { background: #0d1117; color: #E6EDF3 }
+.codehilite .c { color: #8B949E; font-style: italic } /* Comment */
+.codehilite .err { color: #F85149 } /* Error */
+.codehilite .esc { color: #E6EDF3 } /* Escape */
+.codehilite .g { color: #E6EDF3 } /* Generic */
+.codehilite .k { color: #FF7B72 } /* Keyword */
+.codehilite .l { color: #A5D6FF } /* Literal */
+.codehilite .n { color: #E6EDF3 } /* Name */
+.codehilite .o { color: #FF7B72; font-weight: bold } /* Operator */
+.codehilite .x { color: #E6EDF3 } /* Other */
+.codehilite .p { color: #E6EDF3 } /* Punctuation */
+.codehilite .ch { color: #8B949E; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #8B949E; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Preproc */
+.codehilite .cpf { color: #8B949E; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #8B949E; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #8B949E; font-weight: bold; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #FFA198; background-color: #490202 } /* Generic.Deleted */
+.codehilite .ge { color: #E6EDF3; font-style: italic } /* Generic.Emph */
+.codehilite .ges { color: #E6EDF3; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #FFA198 } /* Generic.Error */
+.codehilite .gh { color: #79C0FF; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #56D364; background-color: #0F5323 } /* Generic.Inserted */
+.codehilite .go { color: #8B949E } /* Generic.Output */
+.codehilite .gp { color: #8B949E } /* Generic.Prompt */
+.codehilite .gs { color: #E6EDF3; font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #79C0FF } /* Generic.Subheading */
+.codehilite .gt { color: #FF7B72 } /* Generic.Traceback */
+.codehilite .g-Underline { color: #E6EDF3; text-decoration: underline } /* Generic.Underline */
+.codehilite .kc { color: #79C0FF } /* Keyword.Constant */
+.codehilite .kd { color: #FF7B72 } /* Keyword.Declaration */
+.codehilite .kn { color: #FF7B72 } /* Keyword.Namespace */
+.codehilite .kp { color: #79C0FF } /* Keyword.Pseudo */
+.codehilite .kr { color: #FF7B72 } /* Keyword.Reserved */
+.codehilite .kt { color: #FF7B72 } /* Keyword.Type */
+.codehilite .ld { color: #79C0FF } /* Literal.Date */
+.codehilite .m { color: #A5D6FF } /* Literal.Number */
+.codehilite .s { color: #A5D6FF } /* Literal.String */
+.codehilite .na { color: #E6EDF3 } /* Name.Attribute */
+.codehilite .nb { color: #E6EDF3 } /* Name.Builtin */
+.codehilite .nc { color: #F0883E; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #79C0FF; font-weight: bold } /* Name.Constant */
+.codehilite .nd { color: #D2A8FF; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #FFA657 } /* Name.Entity */
+.codehilite .ne { color: #F0883E; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #D2A8FF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #79C0FF; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #FF7B72 } /* Name.Namespace */
+.codehilite .nx { color: #E6EDF3 } /* Name.Other */
+.codehilite .py { color: #79C0FF } /* Name.Property */
+.codehilite .nt { color: #7EE787 } /* Name.Tag */
+.codehilite .nv { color: #79C0FF } /* Name.Variable */
+.codehilite .ow { color: #FF7B72; font-weight: bold } /* Operator.Word */
+.codehilite .pm { color: #E6EDF3 } /* Punctuation.Marker */
+.codehilite .w { color: #6E7681 } /* Text.Whitespace */
+.codehilite .mb { color: #A5D6FF } /* Literal.Number.Bin */
+.codehilite .mf { color: #A5D6FF } /* Literal.Number.Float */
+.codehilite .mh { color: #A5D6FF } /* Literal.Number.Hex */
+.codehilite .mi { color: #A5D6FF } /* Literal.Number.Integer */
+.codehilite .mo { color: #A5D6FF } /* Literal.Number.Oct */
+.codehilite .sa { color: #79C0FF } /* Literal.String.Affix */
+.codehilite .sb { color: #A5D6FF } /* Literal.String.Backtick */
+.codehilite .sc { color: #A5D6FF } /* Literal.String.Char */
+.codehilite .dl { color: #79C0FF } /* Literal.String.Delimiter */
+.codehilite .sd { color: #A5D6FF } /* Literal.String.Doc */
+.codehilite .s2 { color: #A5D6FF } /* Literal.String.Double */
+.codehilite .se { color: #79C0FF } /* Literal.String.Escape */
+.codehilite .sh { color: #79C0FF } /* Literal.String.Heredoc */
+.codehilite .si { color: #A5D6FF } /* Literal.String.Interpol */
+.codehilite .sx { color: #A5D6FF } /* Literal.String.Other */
+.codehilite .sr { color: #79C0FF } /* Literal.String.Regex */
+.codehilite .s1 { color: #A5D6FF } /* Literal.String.Single */
+.codehilite .ss { color: #A5D6FF } /* Literal.String.Symbol */
+.codehilite .bp { color: #E6EDF3 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #D2A8FF; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #79C0FF } /* Name.Variable.Class */
+.codehilite .vg { color: #79C0FF } /* Name.Variable.Global */
+.codehilite .vi { color: #79C0FF } /* Name.Variable.Instance */
+.codehilite .vm { color: #79C0FF } /* Name.Variable.Magic */
+.codehilite .il { color: #A5D6FF } /* Literal.Number.Integer.Long */
+.codehilite .c, .codehilite .ch, .codehilite .cm, .codehilite .c1 { color: #9d8fb8; font-style: italic; }
+.codehilite .k, .codehilite .kd, .codehilite .kn, .codehilite .kr { color: #ff9d6c; }
+.codehilite .s, .codehilite .s1, .codehilite .s2 { color: #ffd6a5; }
+.codehilite .nf { color: #b8a4ff; }
+.codehilite .nb { color: #ffb1d9; }
+.codehilite .o  { color: #f4a8cf; }
+.codehilite .mi, .codehilite .mf { color: #ffd1a8; }
+mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 3px; }
+</style>
+<script>window.SITE_ROOT = "../";</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo.svg" alt="Cognyzer">
+    <span class="b-name">Cognyzer</span>
+    <span class="b-sub">Terminus-2.0 Docs</span>
+  </a>
+  <div class="actions">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
+    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+<div class="sidebar-overlay"></div>
+<div class="layout"><aside class="sidebar"><div class="search-wrap"><input id="search" type="search" placeholder="Search docs (press /)" autocomplete="off"><div id="searchResults" class="search-results"></div></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">01</span><span class="nav-section-title">Getting Started</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../01-getting-started/01-welcome.html" class=""><span class="num">01</span>Welcome</a></li><li><a href="../01-getting-started/02-quick-start.html" class=""><span class="num">02</span>Quick Start</a></li><li><a href="../01-getting-started/03-platform-onboarding.html" class=""><span class="num">03</span>Platform Onboarding</a></li><li><a href="../01-getting-started/04-cli-user-guide.html" class=""><span class="num">04</span>Cli User Guide</a></li><li><a href="../01-getting-started/05-edition1-to-edition2-changes.html" class=""><span class="num">05</span>Edition1 To Edition2 Changes</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">02</span><span class="nav-section-title">Submission Process</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../02-submission-process/06-platform-submission.html" class=""><span class="num">06</span>Platform Submission</a></li><li><a href="../02-submission-process/07-submission-checklist.html" class=""><span class="num">07</span>Submission Checklist</a></li><li><a href="../02-submission-process/08-after-submission.html" class=""><span class="num">08</span>After Submission</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">03</span><span class="nav-section-title">Understanding Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../03-understanding-tasks/09-what-makes-a-good-task.html" class=""><span class="num">09</span>What Makes A Good Task</a></li><li><a href="../03-understanding-tasks/10-task-components.html" class=""><span class="num">10</span>Task Components</a></li><li><a href="../03-understanding-tasks/11-task-requirements.html" class=""><span class="num">11</span>Task Requirements</a></li><li><a href="../03-understanding-tasks/12-task-taxonomy.html" class=""><span class="num">12</span>Task Taxonomy</a></li><li><a href="../03-understanding-tasks/13-diversity-requirements.html" class=""><span class="num">13</span>Diversity Requirements</a></li><li><a href="../03-understanding-tasks/14-milestones.html" class=""><span class="num">14</span>Milestones</a></li><li><a href="../03-understanding-tasks/15-task-subtypes.html" class=""><span class="num">15</span>Task Subtypes</a></li><li><a href="../03-understanding-tasks/16-rubrics.html" class=""><span class="num">16</span>Rubrics</a></li><li><a href="../03-understanding-tasks/17-prompt-styling.html" class=""><span class="num">17</span>Prompt Styling</a></li><li><a href="../03-understanding-tasks/18-difficulty-guidelines.html" class=""><span class="num">18</span>Difficulty Guidelines</a></li><li><a href="../03-understanding-tasks/19-example-tasks.html" class=""><span class="num">19</span>Example Tasks</a></li></ul></div><div class="nav-section"><div class="nav-section-head"><span class="nav-section-num">04</span><span class="nav-section-title">Creating Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../04-creating-tasks/20-creating-task-video.html" class=""><span class="num">20</span>Creating Task Video</a></li><li><a href="../04-creating-tasks/21-running-your-task-video.html" class=""><span class="num">21</span>Running Your Task Video</a></li><li><a href="../04-creating-tasks/22-creating-docker-environment.html" class=""><span class="num">22</span>Creating Docker Environment</a></li><li><a href="../04-creating-tasks/23-writing-oracle-solution.html" class=""><span class="num">23</span>Writing Oracle Solution</a></li><li><a href="../04-creating-tasks/24-writing-tests.html" class="active"><span class="num">24</span>Writing Tests</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">05</span><span class="nav-section-title">Testing &amp; Validation</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../05-testing-and-validation/25-oracle-agent.html" class=""><span class="num">25</span>Oracle Agent</a></li><li><a href="../05-testing-and-validation/26-nop-agent.html" class=""><span class="num">26</span>Nop Agent</a></li><li><a href="../05-testing-and-validation/27-running-real-agents.html" class=""><span class="num">27</span>Running Real Agents</a></li><li><a href="../05-testing-and-validation/28-ci-feedback-training.html" class=""><span class="num">28</span>Ci Feedback Training</a></li><li><a href="../05-testing-and-validation/29-ci-checks-reference.html" class=""><span class="num">29</span>Ci Checks Reference</a></li><li><a href="../05-testing-and-validation/30-llmaj-checks-reference.html" class=""><span class="num">30</span>Llmaj Checks Reference</a></li><li><a href="../05-testing-and-validation/31-agent-review-reference.html" class=""><span class="num">31</span>Agent Review Reference</a></li></ul></div><div class="nav-section collapsed"><div class="nav-section-head"><span class="nav-section-num">06</span><span class="nav-section-title">Reviewing Tasks</span><span class="nav-section-arrow">&#9660;</span></div><ul class="nav-list"><li><a href="../06-reviewing-tasks/32-review-guidelines.html" class=""><span class="num">32</span>Review Guidelines</a></li><li><a href="../06-reviewing-tasks/33-reviewer-checklist.html" class=""><span class="num">33</span>Reviewer Checklist</a></li><li><a href="../06-reviewing-tasks/34-reviewer-training.html" class=""><span class="num">34</span>Reviewer Training</a></li><li><a href="../06-reviewing-tasks/35-common-errors.html" class=""><span class="num">35</span>Common Errors</a></li><li><a href="../06-reviewing-tasks/36-defending-your-submission.html" class=""><span class="num">36</span>Defending Your Submission</a></li></ul></div></aside><main class="content"><nav class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../index.html#section-04">Creating Tasks</a><span class="sep">/</span><span class="cur">Writing Tests</span></nav><header class="chapter-head"><div class="meta"><span class="num">24</span><span class="tag">Section 04 &middot; Creating Tasks</span></div><h1>Writing Tests</h1></header><article><h1 id="writing-tests">Writing Tests</h1>
+<p>The <code>tests/test_outputs.py</code> file contains pytest tests that verify task completion. Good tests are the foundation of a quality task.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="video-tutorial">Video Tutorial</h3>
+<p><video-loom id="a00541ff2787464c84bf4601415ee624" title="Creating Tests for Your Task"></video-loom></p>
+<h3 id="what-youll-learn">What You'll Learn</h3>
+<ul>
+<li>Structure of test_outputs.py</li>
+<li>Writing effective test cases</li>
+<li>Matching tests to task requirements</li>
+<li>Common testing patterns</li>
+</ul>
+<hr>
+<h2 id="basic-structure">Basic Structure</h2>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Tests for the data processing task.&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_output_file_exists</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify the output file was created.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/output/result.json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_output_format</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify the output has correct JSON structure.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/output/result.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+    <span class="k">assert</span> <span class="s2">&quot;items&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_correct_count</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify the item count is correct.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/output/result.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">42</span>
+</code></pre></div>
+
+<h2 id="key-principles">Key Principles</h2>
+<h3 id="1-test-behavior-not-implementation">1. Test Behavior, Not Implementation</h3>
+<p>Run the code and check results. Don't parse source code looking for patterns.</p>
+<p><strong>Good:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_function_handles_empty_input</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Empty input should return empty list.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">app.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span>
+</code></pre></div>
+
+<p><strong>Bad:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_has_empty_check</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if code has empty input handling.&quot;&quot;&quot;</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/app/main.py&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="s2">&quot;if not&quot;</span> <span class="ow">in</span> <span class="n">source</span>  <span class="c1"># Brittle!</span>
+</code></pre></div>
+
+<h3 id="2-informative-docstrings">2. Informative Docstrings</h3>
+<p>Every test must have a docstring explaining what behavior it checks. This is validated by CI.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_api_returns_json</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;API endpoint should return valid JSON with Content-Type header.&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://localhost:8080/api/data&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>  <span class="c1"># Parseable JSON</span>
+</code></pre></div>
+
+<h3 id="3-match-task-requirements">3. Match Task Requirements</h3>
+<p>Tests need to fully cover all aspects of the prompt (instruction.md). This includes:</p>
+<ul>
+<li>✅ All explicit requirements from the prompt</li>
+<li>✅ Implicitly expected behavior</li>
+<li>✅ Critical edge cases</li>
+</ul>
+<p>Every requirement in the prompt must map to a test. If it is implied or stated in the prompt but not covered by tests, that is a miss.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>instruction.md says...</th>
+<th>Test verifies...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Return empty list for empty input"</td>
+<td><code>test_empty_input_returns_empty_list</code></td>
+</tr>
+<tr>
+<td>"Output to /data/result.csv"</td>
+<td><code>test_output_file_exists</code></td>
+</tr>
+<tr>
+<td>"Include header row"</td>
+<td><code>test_csv_has_header</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Here's a very simplified example for demonstrative purposes only. If the prompt is:</p>
+<blockquote>
+<p>Write a Python function called <code>divide</code> that takes two numbers and returns the result as a float.</p>
+</blockquote>
+<p><strong>Explicit tests:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_function_exists</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A function called &#39;divide&#39; exists&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_takes_two_numbers</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;It accepts two numbers as input&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_divides_correctly</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;It returns the correct division result&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_returns_float</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The return type is a float&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<p><strong>Implicit test / edge case:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_division_by_zero</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;It handles division by zero&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<p>The prompt never mentions division by zero, but any reasonable person reading "a function that divides two numbers" would expect it to handle that case.</p>
+<h3 id="4-cover-edge-cases">4. Cover Edge Cases</h3>
+<p>Test the boundaries, not just the happy path:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_empty_input</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Empty input is handled gracefully.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_single_item</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Single item input works correctly.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_large_input</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Large input is handled efficiently.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;x&quot;</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10000</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_special_characters</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Special characters are preserved.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">process</span><span class="p">(</span><span class="s2">&quot;héllo 世界&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;héllo&quot;</span><span class="p">,</span> <span class="s2">&quot;世界&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<h2 id="teststestsh">tests/test.sh</h2>
+<p>The test runner script sets up the environment, runs pytest, and produces a reward file:</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Install curl</span>
+apt-get<span class="w"> </span>update
+apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl
+
+<span class="c1"># Install uv</span>
+curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/0.9.5/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+
+<span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/.local/bin/env
+
+<span class="c1"># Check if we&#39;re in a valid working directory</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: No working directory set. Please set a WORKDIR in your Dockerfile before running this script.&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="c1"># Don&#39;t change anything below this line except for adding additional Python dependencies, e.g., pandas</span>
+<span class="c1"># Run tests</span>
+uvx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">3</span>.13<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span><span class="nv">pytest</span><span class="o">==</span><span class="m">8</span>.4.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-w<span class="w"> </span>pytest-json-ctrf<span class="o">==</span><span class="m">0</span>.3.5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="c1"># -w pandas==2.3.3 \</span>
+<span class="w">  </span>pytest<span class="w"> </span>--ctrf<span class="w"> </span>/logs/verifier/ctrf.json<span class="w"> </span>/tests/test_outputs.py<span class="w"> </span>-rA
+
+<span class="c1"># Produce reward file (REQUIRED)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/logs/verifier/reward.txt
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;<span class="w"> </span>/logs/verifier/reward.txt
+<span class="k">fi</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Note:</strong> Test dependencies should be installed in <code>tests/test.sh</code>, NOT in the Dockerfile. The script must produce <code>/logs/verifier/reward.txt</code> or <code>/logs/verifier/reward.json</code>.</p>
+</blockquote>
+<h2 id="common-patterns">Common Patterns</h2>
+<h3 id="testing-file-output">Testing File Output</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_csv_output</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verify CSV output format and content.&quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/output/data.csv&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="s2">&quot;name&quot;</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+
+<h3 id="testing-api-endpoints">Testing API Endpoints</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_health_endpoint</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Health check endpoint returns 200.&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://localhost:8080/health&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_api_error_handling</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Invalid requests return 400.&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;http://localhost:8080/api/data&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;invalid&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span>
+</code></pre></div>
+
+<h3 id="testing-database-state">Testing Database State</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_database_populated</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Database contains expected records.&quot;&quot;&quot;</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;/app/data.db&quot;</span><span class="p">)</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM users&quot;</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">assert</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">100</span>
+</code></pre></div>
+
+<h3 id="testing-command-output">Testing Command Output</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_cli_help</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CLI shows help message.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;/app/cli.py&quot;</span><span class="p">,</span> <span class="s2">&quot;--help&quot;</span><span class="p">],</span>
+        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="s2">&quot;Usage:&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span>
+</code></pre></div>
+
+<h2 id="anti-patterns-to-avoid">Anti-Patterns to Avoid</h2>
+<h3 id="brittle-string-matching">Brittle String Matching</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: Exact string match</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_output</span><span class="p">():</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/output/log.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;Processing complete</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="c1"># GOOD: Check for key content</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_output</span><span class="p">():</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/output/log.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="s2">&quot;complete&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="hardcoded-random-values">Hardcoded Random Values</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: Assumes specific random output</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_random</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">generate_random</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">42</span>
+
+<span class="c1"># GOOD: Check properties</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_random</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">generate_random</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">result</span> <span class="o">&lt;=</span> <span class="mi">100</span>
+</code></pre></div>
+
+<h3 id="order-dependent-tests">Order-Dependent Tests</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># BAD: Tests depend on execution order</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_1_setup</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_2_process</span><span class="p">():</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># Fails if test_1 didn&#39;t run first</span>
+
+<span class="c1"># GOOD: Each test is independent</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_process</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</code></pre></div>
+
+<h2 id="ci-validation">CI Validation</h2>
+<p>Your tests will be validated by:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>behavior_in_tests</code></td>
+<td>All task requirements have tests</td>
+</tr>
+<tr>
+<td><code>behavior_in_task_description</code></td>
+<td>All tested behavior is in instruction.md</td>
+</tr>
+<tr>
+<td><code>informative_test_docstrings</code></td>
+<td>Each test has a docstring</td>
+</tr>
+<tr>
+<td><code>ruff</code></td>
+<td>Code passes linting</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Run oracle agent</li>
+<li>Review CI checks</li>
+</ul></article><nav class="pager"><a class="prev" href="../04-creating-tasks/23-writing-oracle-solution.html"><span class="dir">&larr; Previous</span><span class="lbl">Writing Oracle Solution</span></a><a class="next" href="../05-testing-and-validation/25-oracle-agent.html"><span class="dir">Next &rarr;</span><span class="lbl">Oracle Agent</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
+<ul>
+<li><a href="#getting-started">Getting Started</a><ul>
+<li><a href="#video-tutorial">Video Tutorial</a></li>
+<li><a href="#what-youll-learn">What You'll Learn</a></li>
+</ul>
+</li>
+<li><a href="#basic-structure">Basic Structure</a></li>
+<li><a href="#key-principles">Key Principles</a><ul>
+<li><a href="#1-test-behavior-not-implementation">1. Test Behavior, Not Implementation</a></li>
+<li><a href="#2-informative-docstrings">2. Informative Docstrings</a></li>
+<li><a href="#3-match-task-requirements">3. Match Task Requirements</a></li>
+<li><a href="#4-cover-edge-cases">4. Cover Edge Cases</a></li>
+</ul>
+</li>
+<li><a href="#teststestsh">tests/test.sh</a></li>
+<li><a href="#common-patterns">Common Patterns</a><ul>
+<li><a href="#testing-file-output">Testing File Output</a></li>
+<li><a href="#testing-api-endpoints">Testing API Endpoints</a></li>
+<li><a href="#testing-database-state">Testing Database State</a></li>
+<li><a href="#testing-command-output">Testing Command Output</a></li>
+</ul>
+</li>
+<li><a href="#anti-patterns-to-avoid">Anti-Patterns to Avoid</a><ul>
+<li><a href="#brittle-string-matching">Brittle String Matching</a></li>
+<li><a href="#hardcoded-random-values">Hardcoded Random Values</a></li>
+<li><a href="#order-dependent-tests">Order-Dependent Tests</a></li>
+</ul>
+</li>
+<li><a href="#ci-validation">CI Validation</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</div>
+</aside></div>
+<footer class="footer">
+  <span class="b">COGNYZER</span> &middot; Terminus-2.0 Documentation &middot; &copy; 2026
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>
