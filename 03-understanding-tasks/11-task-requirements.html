@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Task Requirements · Terminus-2.0 Docs · Cognyzer</title>
-<meta name="description" content="Task Requirements — Terminus-2.0 documentation, section 03: Understanding Tasks.">
+<meta name="description" content="Task Requirements - Terminus-2.0 documentation, section 03: Understanding Tasks.">
 <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +116,6 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
   </a>
   <div class="actions">
     <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
-    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
   </div>
 </header>
 <div class="sidebar-overlay"></div>
@@ -246,7 +245,7 @@ Always ensure your <code>tests/</code> directory is self-contained. If your task
 * <strong>Difficulty</strong>: The accuracy (out of 5 attempts) for the frontier models described in the Difficulty section.
 * <strong>Task Type (<em>category</em>)</strong>: Each task must have exactly one task type from the list of tasks defined in the Task Type section.
 * <strong>Task Subtype (<em>subcategories</em>)</strong>: If your task has subtypes, then you will include each subtype it aligns to. If no subtypes align to your task, then leave this field blank. <em>See the Task Subtypes section for more information.</em>
-* <strong>Number of Milestones</strong>: The number of milestones present in the task, if none then set this to <strong>0Codebase Size</strong>: One of <code>minimal</code>, <code>small</code>, or <code>large</code>—a rough scale of how many files in the task environment the agent operates on (not files the agent produces). Bands are minimal ≈ 0–20, small ≈ 20+, large ≈ 200+ files.
+* <strong>Number of Milestones</strong>: The number of milestones present in the task, if none then set this to <strong>0Codebase Size</strong>: One of <code>minimal</code>, <code>small</code>, or <code>large</code> - a rough scale of how many files in the task environment the agent operates on (not files the agent produces). Bands are minimal ≈ 0–20, small ≈ 20+, large ≈ 200+ files.
 * <strong>Languages</strong>: Coding language(s) used in the oracle solution or required by the agent.
 * <strong>Runtime Limits</strong>: Each task must specify timeouts, including maximum agent runtime (agent_timeout_sec), maximum verifier runtime (verifier_timeout_sec), and maximum environment build runtime (environment_build_timeout_sec), to ensure tasks are bounded and reproducible.
 * <strong>Tags</strong>: Each task must include ~3-6 descriptive tags in the manifest. Tags are free-form keywords that capture important tools, libraries, techniques, or subtopics relevant to the task.</p>
@@ -301,10 +300,10 @@ Always ensure your <code>tests/</code> directory is self-contained. If your task
 </code></pre></div>
 
 <ul>
-<li><strong>Human-written</strong> — No LLM-generated solutions</li>
-<li><strong>Deterministic</strong> — Same output every run (use seeds for randomness)</li>
-<li><strong>Self-contained</strong> — All logic in the script, no external dependencies</li>
-<li><strong>Idempotent</strong> — Can run multiple times safely</li>
+<li><strong>Human-written</strong> - No LLM-generated solutions</li>
+<li><strong>Deterministic</strong> - Same output every run (use seeds for randomness)</li>
+<li><strong>Self-contained</strong> - All logic in the script, no external dependencies</li>
+<li><strong>Idempotent</strong> - Can run multiple times safely</li>
 </ul>
 <p>For milestone tasks, the following are additionally required:
 - Include <code>solution/solve1.sh</code> through <code>solution/solveN.sh</code> where <code>N = number_of_milestones</code>
@@ -343,23 +342,23 @@ python<span class="w"> </span>script.py<span class="w">  </span><span class="c1"
 - Keep milestone tests aligned to milestone solutions (<code>solve1.sh</code> ↔ <code>test_m1.py</code>, etc.)</p>
 <h3 id="test-quality-checklist">Test Quality Checklist</h3>
 <ul>
-<li><strong>Docstrings on every test</strong> — Explain what behavior is being tested</li>
-<li><strong>Test behavior, not implementation</strong> — Verify outcomes, not methods</li>
-<li><strong>One test per requirement</strong> — Each requirement has a corresponding test</li>
-<li><strong>No leaked answers</strong> — Tests shouldn't reveal the solution</li>
-<li><strong>Anti-cheating measures</strong> — Avoid predictable patterns</li>
+<li><strong>Docstrings on every test</strong> - Explain what behavior is being tested</li>
+<li><strong>Test behavior, not implementation</strong> - Verify outcomes, not methods</li>
+<li><strong>One test per requirement</strong> - Each requirement has a corresponding test</li>
+<li><strong>No leaked answers</strong> - Tests shouldn't reveal the solution</li>
+<li><strong>Anti-cheating measures</strong> - Avoid predictable patterns</li>
 </ul>
 <h3 id="no-canary-strings">No Canary Strings!</h3>
 <p>Canary strings are no longer required in Terminus Edition 2.</p>
 <h3 id="dependency-pinning">Dependency Pinning</h3>
-<p>All dependencies <strong>must</strong> have pinned versions. That includes <strong>language packages and the base image</strong>—pinning only <code>pip</code>/<code>npm</code> installs while leaving <code>FROM</code> floating can still change the OS, libraries, and tool versions between builds.</p>
+<p>All dependencies <strong>must</strong> have pinned versions. That includes <strong>language packages and the base image</strong> - pinning only <code>pip</code>/<code>npm</code> installs while leaving <code>FROM</code> floating can still change the OS, libraries, and tool versions between builds.</p>
 <p><strong>Base image:</strong> Pin every <code>FROM</code> line (and any images declared in <code>docker-compose.yaml</code>) using an <strong>image digest</strong> (<code>image@sha256:...</code>) or another <strong>immutable</strong> tag the publisher documents. Avoid <code>latest</code> and avoid relying on tags that move when the registry rebuilds (for example, many <code>major.minor</code>-style tags are updated in place).</p>
-<div class="codehilite"><pre><span></span><code><span class="c"># ✅ Good — base image pinned by digest; pip packages pinned</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># ✅ Good - base image pinned by digest; pip packages pinned</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim@sha256:&lt;digest&gt;</span>
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">pandas</span><span class="o">==</span><span class="m">2</span>.0.0<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.24.0
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="c"># ❌ Bad — unpinned base (many tags are rebuilt in place) and unpinned pip</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># ❌ Bad - unpinned base (many tags are rebuilt in place) and unpinned pip</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>numpy
 </code></pre></div>
@@ -416,9 +415,9 @@ harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </sp
 <p>Tasks must be resistant to shortcut solutions:</p>
 <h3 id="required-measures">Required Measures</h3>
 <ol>
-<li><strong>Dynamic elements</strong> — Use computed values, not hardcoded answers</li>
-<li><strong>Validation depth</strong> — Test multiple aspects of the solution</li>
-<li><strong>Non-trivial verification</strong> — Answers shouldn't be derivable from tests</li>
+<li><strong>Dynamic elements</strong> - Use computed values, not hardcoded answers</li>
+<li><strong>Validation depth</strong> - Test multiple aspects of the solution</li>
+<li><strong>Non-trivial verification</strong> - Answers shouldn't be derivable from tests</li>
 </ol>
 <h3 id="red-flags">Red Flags</h3>
 <p>Your task will be rejected if:</p>
@@ -540,10 +539,10 @@ harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </sp
 <hr>
 <h2 id="next-steps">Next Steps</h2>
 <ul>
-<li>Quality Guidelines — Required quality standards</li>
-<li>Submission Checklist — Final pre-submission verification</li>
-<li>CI Checks Reference — Detailed check explanations</li>
-<li>Common Errors — Avoid these mistakes</li>
+<li>Quality Guidelines - Required quality standards</li>
+<li>Submission Checklist - Final pre-submission verification</li>
+<li>CI Checks Reference - Detailed check explanations</li>
+<li>Common Errors - Avoid these mistakes</li>
 </ul></article><nav class="pager"><a class="prev" href="../03-understanding-tasks/10-task-components.html"><span class="dir">&larr; Previous</span><span class="lbl">Task Components</span></a><a class="next" href="../03-understanding-tasks/12-task-taxonomy.html"><span class="dir">Next &rarr;</span><span class="lbl">Task Taxonomy</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">
 <ul>
 <li><a href="#instructionmd-requirements">instruction.md Requirements</a></li>

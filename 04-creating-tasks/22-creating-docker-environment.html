@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Creating Docker Environment · Terminus-2.0 Docs · Cognyzer</title>
-<meta name="description" content="Creating Docker Environment — Terminus-2.0 documentation, section 04: Creating Tasks.">
+<meta name="description" content="Creating Docker Environment - Terminus-2.0 documentation, section 04: Creating Tasks.">
 <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +116,6 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
   </a>
   <div class="actions">
     <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
-    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
   </div>
 </header>
 <div class="sidebar-overlay"></div>
@@ -124,7 +123,7 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
 <p>The Dockerfile sets up the task environment. It must be placed in the <code>environment/</code> folder and be reproducible, lightweight, and run without privileged mode.</p>
 <h2 id="basic-dockerfile">Basic Dockerfile</h2>
 <p>Your Dockerfile should be located at <code>environment/Dockerfile</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c"># Pin the base image (digest preferred — see &quot;Pin dependencies and the base image&quot;)</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># Pin the base image (digest preferred - see &quot;Pin dependencies and the base image&quot;)</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim@sha256:&lt;digest&gt;</span>
 
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
@@ -153,10 +152,10 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
 <h3 id="1-pin-dependencies-and-the-base-image">1. Pin dependencies and the base image</h3>
 <p><strong>Base image:</strong> The <code>FROM</code> line is a dependency too. Pin it with a <strong>digest</strong> (<code>image@sha256:...</code>) or another immutable reference. Floating tags (including many <code>major.minor</code> tags that get rebuilt) can change system libraries and tools without you editing the Dockerfile.</p>
 <p><strong>Application packages:</strong> Every pip dependency must have an exact version:</p>
-<div class="codehilite"><pre><span></span><code><span class="c"># Good — pip pins</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># Good - pip pins</span>
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.26.4
 
-<span class="c"># Bad — unpinned pip</span>
+<span class="c"># Bad - unpinned pip</span>
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy&gt;<span class="o">=</span><span class="m">1</span>.0
 </code></pre></div>

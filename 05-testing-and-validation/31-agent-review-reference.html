@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agent Review Reference · Terminus-2.0 Docs · Cognyzer</title>
-<meta name="description" content="Agent Review Reference — Terminus-2.0 documentation, section 05: Testing &amp; Validation.">
+<meta name="description" content="Agent Review Reference - Terminus-2.0 documentation, section 05: Testing &amp; Validation.">
 <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +116,6 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
   </a>
   <div class="actions">
     <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
-    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
   </div>
 </header>
 <div class="sidebar-overlay"></div>
@@ -126,7 +125,7 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
 <p><strong>Note:</strong> Agent Review currently does not block task submission. It is provided as an additional tool to help identify potential issues, warnings, and areas for improvement.</p>
 </blockquote>
 <h2 id="how-it-works">How It Works</h2>
-<p>Agent Review is an automated process that uses Claude Code with a specialized skill to systematically examine your task directory. It performs static analysis—reading and evaluating files without executing any code or building containers.</p>
+<p>Agent Review is an automated process that uses Claude Code with a specialized skill to systematically examine your task directory. It performs static analysis - reading and evaluating files without executing any code or building containers.</p>
 <p>The review produces a structured report with issues categorized by severity and actionable fix recommendations.</p>
 <h2 id="what-gets-reviewed">What Gets Reviewed</h2>
 <p>Agent Review performs a systematic static analysis of your task, examining all key files without executing any code.</p>
@@ -274,7 +273,7 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
 <h2 id="quality-control-criteria">Quality Control Criteria</h2>
 <p>The review enforces these critical guidelines:</p>
 <h3 id="no-latency-based-tests">No Latency-Based Tests</h3>
-<p>Tests must not check for performance thresholds—these vary by hardware and aren't reproducible.</p>
+<p>Tests must not check for performance thresholds - these vary by hardware and aren't reproducible.</p>
 <h3 id="identical-oracleagent-testing">Identical Oracle/Agent Testing</h3>
 <p>Testing logic must be exactly the same for both oracle and agent. Conditional behavior based on execution mode is banned.</p>
 <h3 id="multi-container-tagging">Multi-Container Tagging</h3>
@@ -403,9 +402,9 @@ uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </sp
 <h2 id="acting-on-review-feedback">Acting on Review Feedback</h2>
 <p>When addressing review findings:</p>
 <ol>
-<li><strong>Start with Critical Issues</strong> — These block task validity</li>
-<li><strong>Fix Warnings</strong> — Improve task quality and reliability</li>
-<li><strong>Consider Suggestions</strong> — Optional but beneficial</li>
+<li><strong>Start with Critical Issues</strong> - These block task validity</li>
+<li><strong>Fix Warnings</strong> - Improve task quality and reliability</li>
+<li><strong>Consider Suggestions</strong> - Optional but beneficial</li>
 </ol>
 <hr>
 <h2 id="next-steps">Next Steps</h2>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Task Components · Terminus-2.0 Docs · Cognyzer</title>
-<meta name="description" content="Task Components — Terminus-2.0 documentation, section 03: Understanding Tasks.">
+<meta name="description" content="Task Components - Terminus-2.0 documentation, section 03: Understanding Tasks.">
 <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +116,6 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
   </a>
   <div class="actions">
     <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
-    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
   </div>
 </header>
 <div class="sidebar-overlay"></div>
@@ -173,7 +172,7 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
 * <strong>Difficulty</strong>: The accuracy (out of 5 attempts) for the frontier models described in the Difficulty section.
 * <strong>Task Type</strong>: Each task must have exactly one task type from the list of tasks defined in the Task Type section.
 * <strong>Task Subtype/subcategories</strong>: If your task has any subcategories it aligns with, then you will include each subtype it aligns to here. If no subcategories align with your task, leave this empty. See the Task Subtypes section for more information.
-* <strong>Number of Milestones</strong>: The number of milestones present in the task, if no milestones then use the value of <strong>0Codebase Size</strong>: One of <code>minimal</code>, <code>small</code>, or <code>large</code>—a rough scale of how many files in the task environment the agent operates on (not files the agent produces). Bands are minimal ≈ 0–20, small ≈ 20+, large ≈ 200+ files.
+* <strong>Number of Milestones</strong>: The number of milestones present in the task, if no milestones then use the value of <strong>0Codebase Size</strong>: One of <code>minimal</code>, <code>small</code>, or <code>large</code> - a rough scale of how many files in the task environment the agent operates on (not files the agent produces). Bands are minimal ≈ 0–20, small ≈ 20+, large ≈ 200+ files.
 * <strong>Runtime Limits</strong>: Each task must specify timeouts, including maximum agent runtime (agent_timeout_sec), maximum verifier runtime (verifier_timeout_sec), and maximum environment build runtime (environment_build_timeout_sec), to ensure tasks are bounded and reproducible.
 * <strong>Tags</strong>: Each task must include ~3-6 descriptive tags in the manifest. Tags are free-form keywords that capture important tools, libraries, techniques, or subtopics relevant to the task.</p>
 <p><strong>Basic structure:</strong></p>
@@ -221,7 +220,7 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
 <p><strong>Required files depend on environment type:</strong>
 - For Docker: <code>environment/Dockerfile</code> OR <code>environment/docker-compose.yaml</code></p>
 <p><strong>Example Dockerfile:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c"># Pin base image (e.g. digest) — see task requirements</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># Pin base image (e.g. digest) - see task requirements</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim@sha256:&lt;digest&gt;</span>
 
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
@@ -261,7 +260,7 @@ python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;f
 
 <p><strong>Key principles:</strong>
 - Demonstrates the <strong>command sequence</strong>, not just the answer
-- Must be <strong>deterministic</strong> — same result every run
+- Must be <strong>deterministic</strong> - same result every run
 - No hardcoded outputs (don't just <code>echo</code> the answer)
 - Can include <strong>dependencies</strong> (other files in <code>solution/</code> folder)
 - If no solution provided, Oracle agent cannot be used to sanity check</p>
@@ -371,7 +370,7 @@ uvx<span class="w"> </span><span class="se">\</span>
 <hr>
 <h2 id="next-steps">Next Steps</h2>
 <ul>
-<li>Write task instructions — Detailed guide for writing <code>instruction.md</code></li>
+<li>Write task instructions - Detailed guide for writing <code>instruction.md</code></li>
 <li>Learn the task taxonomy</li>
 <li>See example tasks</li>
 <li>Create your first task</li>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ci Checks Reference · Terminus-2.0 Docs · Cognyzer</title>
-<meta name="description" content="Ci Checks Reference — Terminus-2.0 documentation, section 05: Testing &amp; Validation.">
+<meta name="description" content="Ci Checks Reference - Terminus-2.0 documentation, section 05: Testing &amp; Validation.">
 <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,7 +116,6 @@ mark { background: #ffe7a8; color: var(--c-ink); padding: 0 2px; border-radius: 
   </a>
   <div class="actions">
     <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation">☰ Menu</button>
-    <a href="https://github.com/naveenkatiyar2001/terminus-2.0-docs" target="_blank" rel="noopener">GitHub</a>
   </div>
 </header>
 <div class="sidebar-overlay"></div>
@@ -131,18 +130,18 @@ harbor<span class="w"> </span>run<span class="w"> </span>-a<span class="w"> </sp
 <h3 id="pinned_dependencies">pinned_dependencies</h3>
 <p><strong>What it checks:</strong> All pip (and similar) dependencies have exact version numbers. You should also <strong>pin base and service images</strong> in <code>FROM</code> and in <code>docker-compose.yaml</code> so the environment does not drift when registry tags move.</p>
 <p><strong>How to fix:</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c"># Bad — unpinned pip</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># Bad - unpinned pip</span>
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas
 
-<span class="c"># Good — pinned pip</span>
+<span class="c"># Good - pinned pip</span>
 <span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.26.4<span class="w"> </span><span class="nv">pandas</span><span class="o">==</span><span class="m">2</span>.1.0
 </code></pre></div>
 
 <p><strong>Base image:</strong> Prefer a digest on <code>FROM</code> (and on any <code>image:</code> in compose):</p>
-<div class="codehilite"><pre><span></span><code><span class="c"># Good — immutable</span>
+<div class="codehilite"><pre><span></span><code><span class="c"># Good - immutable</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim@sha256:...</span>
 
-<span class="c"># Risky — tag may be rebuilt in place</span>
+<span class="c"># Risky - tag may be rebuilt in place</span>
 <span class="c"># FROM python:3.11-slim</span>
 </code></pre></div>
 
@@ -309,7 +308,7 @@ ruff<span class="w"> </span>check<span class="w"> </span>--fix<span class="w"> <
 <hr>
 <h2 id="next-steps">Next Steps</h2>
 <ul>
-<li>Quality Guidelines — Additional quality standards</li>
+<li>Quality Guidelines - Additional quality standards</li>
 <li>Review LLMaJ checks</li>
 <li>Submit your task</li>
 </ul></article><nav class="pager"><a class="prev" href="../05-testing-and-validation/28-ci-feedback-training.html"><span class="dir">&larr; Previous</span><span class="lbl">Ci Feedback Training</span></a><a class="next" href="../05-testing-and-validation/30-llmaj-checks-reference.html"><span class="dir">Next &rarr;</span><span class="lbl">Llmaj Checks Reference</span></a></nav></main><aside class="page-toc"><div class="h">On this page</div><div class="toc">

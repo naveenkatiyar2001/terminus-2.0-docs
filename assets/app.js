@@ -1,4 +1,4 @@
-// Cognyzer / Terminus-2.0 Docs — sidebar + search + scrollspy
+// Cognyzer / Terminus-2.0 Docs - sidebar + search + scrollspy
 (function () {
   'use strict';
 
